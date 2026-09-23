@@ -7,50 +7,57 @@
   <meta name="description" content="강남·신논현 초역세권 프리미엄 공유오피스, 비상주 사무실, 회의실 대여, 사업자등록 지원.">
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <!-- Pretendard 폰트 적용 -->
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
   <style>
-    html { scroll-behavior: smooth; }
+    html { scroll-behavior: smooth; font-family: 'Pretendard', sans-serif; }
   </style>
 </head>
-<body class="bg-gray-50 text-gray-800 font-sans antialiased">
+<body class="bg-slate-50 text-slate-800 antialiased">
 
   <!-- Header -->
-  <header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-gray-200">
+  <header class="fixed w-full top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200 shadow-sm transition-all">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
-      <div class="flex items-center gap-2">
-        <span class="text-2xl font-black tracking-tight text-blue-600">BRIDGE<span class="text-gray-900">BIZ</span></span>
+      <div class="flex items-center gap-2 cursor-pointer" onclick="window.scrollTo(0,0)">
+        <span class="text-2xl font-black tracking-tighter text-blue-700">BRIDGE<span class="text-slate-900">BIZ</span></span>
       </div>
-      <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-gray-600">
-        <a href="#services" class="hover:text-blue-600 transition">서비스 안내</a>
-        <a href="#pricing" class="hover:text-blue-600 transition">이용 요금</a>
-        <a href="#features" class="hover:text-blue-600 transition">특장점</a>
-        <a href="#location" class="hover:text-blue-600 transition">오시는 길</a>
+      <nav class="hidden md:flex items-center gap-8 text-[15px] font-semibold text-slate-600">
+        <a href="#services" class="hover:text-blue-700 transition">서비스 안내</a>
+        <a href="#pricing" class="hover:text-blue-700 transition">이용 요금</a>
+        <a href="#location" class="hover:text-blue-700 transition">오시는 길</a>
       </nav>
       <div>
-        <a href="#contact" class="inline-flex items-center justify-center px-4 py-2 text-sm font-semibold text-white bg-blue-600 rounded-lg shadow hover:bg-blue-700 transition">
-          입주·입점 상담
+        <a href="#contact" class="inline-flex items-center justify-center px-5 py-2.5 text-sm font-bold text-white bg-blue-700 rounded-lg shadow-md hover:bg-blue-800 transition transform hover:-translate-y-0.5">
+          입주·상담 신청
         </a>
       </div>
     </div>
   </header>
 
   <!-- Hero Section -->
-  <section class="relative bg-gradient-to-b from-blue-50/50 to-white py-20 lg:py-28">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <span class="inline-block px-3 py-1 text-xs font-semibold text-blue-700 bg-blue-100 rounded-full mb-4">
+  <section class="relative h-screen min-h-[600px] max-h-[900px] flex items-center justify-center pt-16">
+    <!-- 배경 이미지 -->
+    <div class="absolute inset-0 z-0">
+      <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1920" alt="프리미엄 오피스 배경" class="w-full h-full object-cover" />
+      <div class="absolute inset-0 bg-slate-900/70"></div>
+    </div>
+    <!-- 텍스트 콘텐츠 -->
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mt-10">
+      <span class="inline-block px-4 py-1.5 text-sm font-bold text-blue-200 bg-blue-900/50 border border-blue-700/50 rounded-full mb-6 backdrop-blur-sm">
         신규 사업자 & 법인 설립 맞춤 솔루션
       </span>
-      <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-gray-900 tracking-tight leading-tight">
+      <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-tight drop-shadow-lg">
         성공적인 비즈니스를 위한 <br class="hidden sm:block" />
-        <span class="text-blue-600">가장 스마트한 업무 공간</span>
+        <span class="text-blue-400">가장 스마트한 업무 공간</span>
       </h1>
-      <p class="mt-6 text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto">
-        강남 초역세권 프리미엄 비상주 오피스부터 독립형 상주 사무실까지, 합리적인 비용과 검증된 행정·세무 인프라를 지원합니다.
+      <p class="mt-6 text-lg sm:text-xl text-slate-300 max-w-2xl mx-auto drop-shadow-md">
+        강남 초역세권 프리미엄 비상주 오피스부터 독립형 상주 사무실까지, 합리적인 비용과 검증된 인프라를 지원합니다.
       </p>
-      <div class="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
-        <a href="#pricing" class="px-8 py-3.5 text-base font-bold text-white bg-blue-600 rounded-xl shadow-lg hover:bg-blue-700 transition">
+      <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="#pricing" class="px-8 py-4 text-base font-bold text-white bg-blue-600 rounded-xl shadow-lg shadow-blue-900/20 hover:bg-blue-700 transition transform hover:-translate-y-1">
           요금제 확인하기
         </a>
-        <a href="#contact" class="px-8 py-3.5 text-base font-bold text-gray-700 bg-white border border-gray-300 rounded-xl hover:bg-gray-100 transition">
+        <a href="#contact" class="px-8 py-4 text-base font-bold text-slate-900 bg-white rounded-xl shadow-lg hover:bg-slate-50 transition transform hover:-translate-y-1">
           비상주 온라인 간편 신청
         </a>
       </div>
@@ -58,158 +65,220 @@
   </section>
 
   <!-- Services Section -->
-  <section id="services" class="py-20 bg-white">
+  <section id="services" class="py-24 bg-slate-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center max-w-3xl mx-auto mb-16">
-        <h2 class="text-3xl font-bold text-gray-900">대표 맞춤형 비즈니스 서비스</h2>
-        <p class="mt-3 text-gray-600">업무 형태와 사업 규모에 맞춘 최적의 공간을 제공합니다.</p>
+        <h2 class="text-3xl md:text-4xl font-bold text-slate-900">대표 맞춤형 비즈니스 서비스</h2>
+        <p class="mt-4 text-lg text-slate-600">업무 형태와 사업 규모에 맞춘 최적의 공간을 제공합니다.</p>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
         <!-- Card 1 -->
-        <div class="p-8 rounded-2xl border border-gray-200 bg-gray-50/50 hover:shadow-xl hover:border-blue-200 transition">
-          <div class="w-12 h-12 flex items-center justify-center bg-blue-100 text-blue-600 rounded-xl mb-6 text-xl">
-            <i class="fa-solid fa-building"></i>
+        <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-slate-200 hover:shadow-2xl hover:-translate-y-1 transition duration-300 group">
+          <div class="h-48 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&q=80&w=800" alt="비상주 오피스" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
           </div>
-          <h3 class="text-xl font-bold text-gray-900 mb-3">비상주 사무실 (Virtual)</h3>
-          <p class="text-gray-600 text-sm leading-relaxed mb-4">
-            실제 공간 임대 없이 강남권 명문 주소지로 개인·법인 사업자등록을 완료할 수 있습니다.
-          </p>
-          <ul class="text-sm text-gray-600 space-y-2">
-            <li><i class="fa-solid fa-check text-blue-500 mr-2"></i>우편물 실시간 알림 & 무료 보관</li>
-            <li><i class="fa-solid fa-check text-blue-500 mr-2"></i>실사 완벽 지원 & 회의실 제공</li>
-            <li><i class="fa-solid fa-check text-blue-500 mr-2"></i>당일 계약서 발급</li>
-          </ul>
+          <div class="p-8">
+            <h3 class="text-xl font-bold text-slate-900 mb-3">비상주 사무실 (Virtual)</h3>
+            <p class="text-slate-600 text-sm leading-relaxed mb-5 h-10">
+              실제 공간 임대 없이 강남권 명문 주소지로 개인·법인 사업자등록을 완료할 수 있습니다.
+            </p>
+            <ul class="text-sm text-slate-700 space-y-2.5 font-medium">
+              <li class="flex items-center"><i class="fa-solid fa-check text-blue-600 mr-2.5"></i>우편물 실시간 알림 & 무료 보관</li>
+              <li class="flex items-center"><i class="fa-solid fa-check text-blue-600 mr-2.5"></i>실사 완벽 지원 & 회의실 제공</li>
+              <li class="flex items-center"><i class="fa-solid fa-check text-blue-600 mr-2.5"></i>당일 계약서 발급 완료</li>
+            </ul>
+          </div>
         </div>
 
         <!-- Card 2 -->
-        <div class="p-8 rounded-2xl border border-gray-200 bg-gray-50/50 hover:shadow-xl hover:border-blue-200 transition">
-          <div class="w-12 h-12 flex items-center justify-center bg-blue-100 text-blue-600 rounded-xl mb-6 text-xl">
-            <i class="fa-solid fa-door-closed"></i>
+        <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-slate-200 hover:shadow-2xl hover:-translate-y-1 transition duration-300 group">
+          <div class="h-48 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&q=80&w=800" alt="상주 오피스" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
           </div>
-          <h3 class="text-xl font-bold text-gray-900 mb-3">독립형 상주 오피스</h3>
-          <p class="text-gray-600 text-sm leading-relaxed mb-4">
-            1인실부터 다인실까지, 완벽한 방음과 보안을 갖춘 24시간 개인 전용 업무 공간입니다.
-          </p>
-          <ul class="text-sm text-gray-600 space-y-2">
-            <li><i class="fa-solid fa-check text-blue-500 mr-2"></i>개별 도어록 및 냉난방 제어</li>
-            <li><i class="fa-solid fa-check text-blue-500 mr-2"></i>초고속 기가 인터넷 및 사무기기 완비</li>
-            <li><i class="fa-solid fa-check text-blue-500 mr-2"></i>관리비/공과금 일체 포함</li>
-          </ul>
+          <div class="p-8">
+            <h3 class="text-xl font-bold text-slate-900 mb-3">독립형 상주 오피스</h3>
+            <p class="text-slate-600 text-sm leading-relaxed mb-5 h-10">
+              1인실부터 다인실까지, 완벽한 방음과 보안을 갖춘 24시간 개인 전용 업무 공간입니다.
+            </p>
+            <ul class="text-sm text-slate-700 space-y-2.5 font-medium">
+              <li class="flex items-center"><i class="fa-solid fa-check text-blue-600 mr-2.5"></i>개별 도어록 및 개별 냉난방</li>
+              <li class="flex items-center"><i class="fa-solid fa-check text-blue-600 mr-2.5"></i>초고속 기가 인터넷 완비</li>
+              <li class="flex items-center"><i class="fa-solid fa-check text-blue-600 mr-2.5"></i>관리비 및 공과금 일체 포함</li>
+            </ul>
+          </div>
         </div>
 
         <!-- Card 3 -->
-        <div class="p-8 rounded-2xl border border-gray-200 bg-gray-50/50 hover:shadow-xl hover:border-blue-200 transition">
-          <div class="w-12 h-12 flex items-center justify-center bg-blue-100 text-blue-600 rounded-xl mb-6 text-xl">
-            <i class="fa-solid fa-handshake"></i>
+        <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-slate-200 hover:shadow-2xl hover:-translate-y-1 transition duration-300 group">
+          <div class="h-48 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&q=80&w=800" alt="회의실" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
           </div>
-          <h3 class="text-xl font-bold text-gray-900 mb-3">프리미엄 회의실</h3>
-          <p class="text-gray-600 text-sm leading-relaxed mb-4">
-            외부 미팅, PT, 면접, 비즈니스 세미나를 위한 대형 모니터 및 빔프로젝터 완비 미팅룸입니다.
-          </p>
-          <ul class="text-sm text-gray-600 space-y-2">
-            <li><i class="fa-solid fa-check text-blue-500 mr-2"></i>4인실 ~ 12인실 대형 회의 공간</li>
-            <li><i class="fa-solid fa-check text-blue-500 mr-2"></i>커피 및 프리미엄 티 상시 무료 제공</li>
-            <li><i class="fa-solid fa-check text-blue-500 mr-2"></i>입주고객 전용 크레딧 부여</li>
-          </ul>
+          <div class="p-8">
+            <h3 class="text-xl font-bold text-slate-900 mb-3">프리미엄 회의실</h3>
+            <p class="text-slate-600 text-sm leading-relaxed mb-5 h-10">
+              외부 미팅, PT, 면접, 세미나를 위한 대형 모니터 및 빔프로젝터 완비 미팅룸입니다.
+            </p>
+            <ul class="text-sm text-slate-700 space-y-2.5 font-medium">
+              <li class="flex items-center"><i class="fa-solid fa-check text-blue-600 mr-2.5"></i>4인실 ~ 12인실 대형 공간</li>
+              <li class="flex items-center"><i class="fa-solid fa-check text-blue-600 mr-2.5"></i>커피 및 프리미엄 티 무제한</li>
+              <li class="flex items-center"><i class="fa-solid fa-check text-blue-600 mr-2.5"></i>입주고객 전용 크레딧 부여</li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Pricing Section -->
-  <section id="pricing" class="py-20 bg-gray-50">
+  <section id="pricing" class="py-24 bg-white border-y border-slate-200">
+    <!-- 기존 프라이싱 구조 유지 및 CSS만 고급화 -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center max-w-3xl mx-auto mb-16">
-        <h2 class="text-3xl font-bold text-gray-900">투명하고 합리적인 요금제</h2>
-        <p class="mt-3 text-gray-600">숨겨진 추가 비용 없이 필요한 기간만큼 계약하세요.</p>
+        <h2 class="text-3xl md:text-4xl font-bold text-slate-900">투명하고 합리적인 요금제</h2>
+        <p class="mt-4 text-lg text-slate-600">숨겨진 추가 비용 없이 필요한 기간만큼 계약하세요.</p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto items-center">
         <!-- Plan 1 -->
-        <div class="bg-white p-8 rounded-2xl border border-gray-200 shadow-sm flex flex-col justify-between">
-          <div>
-            <h3 class="text-xl font-bold text-gray-900">비상주 (개인)</h3>
-            <p class="text-gray-500 text-sm mt-1">소자본 창업 및 프리랜서 맞춤</p>
-            <div class="my-6">
-              <span class="text-3xl font-extrabold text-gray-900">월 30,000원~</span>
-              <span class="text-xs text-gray-400 block mt-1">(12개월 선납 기준 / 부가세 별도)</span>
-            </div>
-            <ul class="text-sm text-gray-600 space-y-3">
-              <li>✓ 사업자등록 주소지 제공</li>
-              <li>✓ 우편물 수령 및 문자 알림</li>
-              <li>✓ 관공서 현장 실사 지원</li>
-              <li>✓ 공용 라운지 무료 이용</li>
-            </ul>
+        <div class="bg-slate-50 p-10 rounded-3xl border border-slate-200 shadow-sm">
+          <h3 class="text-2xl font-bold text-slate-900">비상주 <span class="text-lg font-medium text-slate-500">(개인)</span></h3>
+          <p class="text-slate-500 text-sm mt-2">소자본 창업 및 프리랜서 맞춤</p>
+          <div class="my-8">
+            <span class="text-4xl font-extrabold text-slate-900">30,000<span class="text-xl">원</span></span><span class="text-slate-500 font-medium"> / 월~</span>
+            <span class="text-xs text-slate-400 block mt-2">(12개월 선납 기준 / 부가세 별도)</span>
           </div>
-          <a href="#contact" class="mt-8 block text-center py-3 bg-gray-100 hover:bg-gray-200 text-gray-800 font-semibold rounded-xl transition">신청하기</a>
+          <ul class="text-sm text-slate-600 space-y-4 font-medium mb-10">
+            <li class="flex"><i class="fa-solid fa-check text-slate-400 mt-1 mr-3"></i> <span>사업자등록 주소지 제공</span></li>
+            <li class="flex"><i class="fa-solid fa-check text-slate-400 mt-1 mr-3"></i> <span>우편물 수령 및 문자 알림</span></li>
+            <li class="flex"><i class="fa-solid fa-check text-slate-400 mt-1 mr-3"></i> <span>관공서 현장 실사 지원</span></li>
+          </ul>
+          <a href="#contact" class="block text-center py-4 bg-white border border-slate-300 hover:bg-slate-100 text-slate-800 font-bold rounded-xl transition">신청하기</a>
         </div>
 
-        <!-- Plan 2 -->
-        <div class="bg-white p-8 rounded-2xl border-2 border-blue-600 shadow-lg relative flex flex-col justify-between">
-          <span class="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full">가장 인기</span>
-          <div>
-            <h3 class="text-xl font-bold text-gray-900">비상주 (법인)</h3>
-            <p class="text-gray-500 text-sm mt-1">신규 법인 설립 및 지점 이전</p>
-            <div class="my-6">
-              <span class="text-3xl font-extrabold text-blue-600">월 40,000원~</span>
-              <span class="text-xs text-gray-400 block mt-1">(12개월 선납 기준 / 부가세 별도)</span>
-            </div>
-            <ul class="text-sm text-gray-600 space-y-3">
-              <li>✓ 법인 설립/이전 주소지 등록</li>
-              <li>✓ 우편물 주 1회 스캔/발송 지원</li>
-              <li>✓ 금융기관·관공서 실사 전담 응대</li>
-              <li>✓ 월 2시간 미팅룸 무료 이용</li>
-            </ul>
+        <!-- Plan 2 (Highlighted) -->
+        <div class="bg-blue-700 p-10 rounded-3xl shadow-2xl relative transform md:-translate-y-4">
+          <span class="absolute -top-4 left-1/2 -translate-x-1/2 bg-gradient-to-r from-amber-400 to-orange-500 text-white text-xs font-black px-4 py-1.5 rounded-full shadow-lg tracking-wide">BEST CHOICE</span>
+          <h3 class="text-2xl font-bold text-white">비상주 <span class="text-lg font-medium text-blue-200">(법인)</span></h3>
+          <p class="text-blue-200 text-sm mt-2">신규 법인 설립 및 지점 이전</p>
+          <div class="my-8">
+            <span class="text-4xl font-extrabold text-white">40,000<span class="text-xl">원</span></span><span class="text-blue-200 font-medium"> / 월~</span>
+            <span class="text-xs text-blue-300 block mt-2">(12개월 선납 기준 / 부가세 별도)</span>
           </div>
-          <a href="#contact" class="mt-8 block text-center py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-xl transition">신청하기</a>
+          <ul class="text-sm text-white space-y-4 font-medium mb-10">
+            <li class="flex"><i class="fa-solid fa-check text-blue-300 mt-1 mr-3"></i> <span>법인 설립/이전 주소지 등록</span></li>
+            <li class="flex"><i class="fa-solid fa-check text-blue-300 mt-1 mr-3"></i> <span>우편물 주 1회 스캔/발송 지원</span></li>
+            <li class="flex"><i class="fa-solid fa-check text-blue-300 mt-1 mr-3"></i> <span>금융기관·관공서 실사 전담 응대</span></li>
+          </ul>
+          <a href="#contact" class="block text-center py-4 bg-white hover:bg-blue-50 text-blue-700 font-bold rounded-xl shadow-lg transition">신청하기</a>
         </div>
 
         <!-- Plan 3 -->
-        <div class="bg-white p-8 rounded-2xl border border-gray-200 shadow-sm flex flex-col justify-between">
-          <div>
-            <h3 class="text-xl font-bold text-gray-900">상주 1인실</h3>
-            <p class="text-gray-500 text-sm mt-1">집중 업무가 필요한 전문직·대표님</p>
-            <div class="my-6">
-              <span class="text-3xl font-extrabold text-gray-900">월 250,000원~</span>
-              <span class="text-xs text-gray-400 block mt-1">(보증금 1개월치 / 예치금 지원)</span>
-            </div>
-            <ul class="text-sm text-gray-600 space-y-3">
-              <li>✓ 24시간 365일 자유 출입</li>
-              <li>✓ 초고속 유/무선 네트워크</li>
-              <li>✓ 미팅룸 무제한 예약 할인</li>
-              <li>✓ 고급 사무가구 기본 세팅</li>
-            </ul>
+        <div class="bg-slate-50 p-10 rounded-3xl border border-slate-200 shadow-sm">
+          <h3 class="text-2xl font-bold text-slate-900">상주 1인실</h3>
+          <p class="text-slate-500 text-sm mt-2">집중 업무가 필요한 전문직·대표님</p>
+          <div class="my-8">
+            <span class="text-4xl font-extrabold text-slate-900">250,000<span class="text-xl">원</span></span><span class="text-slate-500 font-medium"> / 월~</span>
+            <span class="text-xs text-slate-400 block mt-2">(보증금 1개월치 / 예치금 지원)</span>
           </div>
-          <a href="#contact" class="mt-8 block text-center py-3 bg-gray-100 hover:bg-gray-200 text-gray-800 font-semibold rounded-xl transition">입주 문의</a>
+          <ul class="text-sm text-slate-600 space-y-4 font-medium mb-10">
+            <li class="flex"><i class="fa-solid fa-check text-slate-400 mt-1 mr-3"></i> <span>24시간 365일 자유 출입</span></li>
+            <li class="flex"><i class="fa-solid fa-check text-slate-400 mt-1 mr-3"></i> <span>초고속 유/무선 네트워크</span></li>
+            <li class="flex"><i class="fa-solid fa-check text-slate-400 mt-1 mr-3"></i> <span>고급 사무가구 기본 세팅</span></li>
+          </ul>
+          <a href="#contact" class="block text-center py-4 bg-white border border-slate-300 hover:bg-slate-100 text-slate-800 font-bold rounded-xl transition">입주 문의</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 전면 개편된 Location Section -->
+  <section id="location" class="py-24 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <!-- 텍스트 영역 -->
+        <div>
+          <span class="text-blue-700 font-bold tracking-wider text-sm mb-2 block">LOCATION</span>
+          <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-6 leading-tight">최적의 비즈니스 인프라,<br>강남역 도보 3분</h2>
+          <p class="text-slate-600 mb-10 leading-relaxed text-lg">
+            접근성이 비즈니스의 경쟁력입니다. 방문객과 임직원 모두에게 쾌적하고 편리한 최상의 업무 환경을 제공합니다.
+          </p>
+          
+          <div class="space-y-6">
+            <div class="flex items-start p-5 bg-white rounded-2xl border border-slate-200 shadow-sm">
+              <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center shrink-0 mr-4">
+                <i class="fa-solid fa-location-dot text-blue-700 text-xl"></i>
+              </div>
+              <div>
+                <h4 class="font-bold text-slate-900 mb-1">도로명 주소</h4>
+                <p class="text-slate-600 text-sm">서울특별시 서초구 강남대로 000, 00빌딩 00층</p>
+              </div>
+            </div>
+
+            <div class="flex items-start p-5 bg-white rounded-2xl border border-slate-200 shadow-sm">
+              <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center shrink-0 mr-4">
+                <i class="fa-solid fa-train-subway text-blue-700 text-xl"></i>
+              </div>
+              <div>
+                <h4 class="font-bold text-slate-900 mb-1">지하철 이용시</h4>
+                <p class="text-slate-600 text-sm">강남역 (2호선/신분당선) 10번 출구 도보 3분<br>신논현역 (9호선) 7번 출구 도보 4분</p>
+              </div>
+            </div>
+
+            <div class="flex items-start p-5 bg-white rounded-2xl border border-slate-200 shadow-sm">
+              <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center shrink-0 mr-4">
+                <i class="fa-solid fa-car text-blue-700 text-xl"></i>
+              </div>
+              <div>
+                <h4 class="font-bold text-slate-900 mb-1">주차 안내</h4>
+                <p class="text-slate-600 text-sm">건물 내 지하 자주식 주차장 이용 가능<br>(입주사 정기 주차 가능 / 방문객 1시간 무료 지원)</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 이미지 영역 (임시 지도 대체용 빌딩/지도 이미지) -->
+        <div class="relative h-[500px] rounded-3xl overflow-hidden shadow-2xl border border-slate-200">
+          <img src="https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&q=80&w=1000" alt="지도 위치" class="w-full h-full object-cover">
+          <div class="absolute inset-0 bg-blue-900/10"></div>
+          
+          <!-- UI 마커 포인트 -->
+          <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex flex-col items-center animate-bounce">
+            <div class="bg-slate-900 text-white px-5 py-2.5 rounded-xl font-bold shadow-xl mb-3 text-sm tracking-wide">
+              BRIDGE BIZ
+            </div>
+            <div class="w-4 h-4 bg-slate-900 rotate-45 -mt-5"></div>
+            <div class="w-6 h-6 bg-blue-600 rounded-full border-4 border-white shadow-lg mt-2"></div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Contact Section -->
-  <section id="contact" class="py-20 bg-white">
+  <section id="contact" class="py-24 bg-white border-t border-slate-200">
+    <!-- ... 기존 Contact 폼 구조 유지 및 디자인만 정돈 ... -->
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-12">
-        <h2 class="text-3xl font-bold text-gray-900">빠른 입점 & 계약 문의</h2>
-        <p class="mt-3 text-gray-600">문의를 남겨주시면 담당자가 10분 이내로 확인 후 친절히 안내해 드립니다.</p>
+        <h2 class="text-3xl font-bold text-slate-900">빠른 입점 & 계약 문의</h2>
+        <p class="mt-4 text-slate-600">문의를 남겨주시면 담당자가 10분 이내로 확인 후 친절히 안내해 드립니다.</p>
       </div>
 
-      <form class="space-y-6 bg-gray-50 p-8 rounded-2xl border border-gray-200" onsubmit="event.preventDefault(); alert('문의가 성공적으로 접수되었습니다. 담당자가 곧 연락드리겠습니다.');">
+      <form class="space-y-6 bg-slate-50 p-10 rounded-3xl border border-slate-200 shadow-sm" onsubmit="event.preventDefault(); alert('문의가 성공적으로 접수되었습니다. 담당자가 곧 연락드리겠습니다.');">
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
           <div>
-            <label class="block text-sm font-semibold text-gray-700 mb-2">성함 또는 법인명</label>
-            <input type="text" required placeholder="홍길동 / (주)브릿지" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white">
+            <label class="block text-sm font-bold text-slate-700 mb-2">성함 또는 법인명</label>
+            <input type="text" required placeholder="홍길동 / (주)브릿지" class="w-full px-5 py-4 rounded-xl border border-slate-300 focus:outline-none focus:border-blue-600 focus:ring-1 focus:ring-blue-600 bg-white transition">
           </div>
           <div>
-            <label class="block text-sm font-semibold text-gray-700 mb-2">연락처</label>
-            <input type="tel" required placeholder="010-0000-0000" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white">
+            <label class="block text-sm font-bold text-slate-700 mb-2">연락처</label>
+            <input type="tel" required placeholder="010-0000-0000" class="w-full px-5 py-4 rounded-xl border border-slate-300 focus:outline-none focus:border-blue-600 focus:ring-1 focus:ring-blue-600 bg-white transition">
           </div>
         </div>
 
         <div>
-          <label class="block text-sm font-semibold text-gray-700 mb-2">문의 유형</label>
-          <select class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white">
+          <label class="block text-sm font-bold text-slate-700 mb-2">문의 유형</label>
+          <select class="w-full px-5 py-4 rounded-xl border border-slate-300 focus:outline-none focus:border-blue-600 focus:ring-1 focus:ring-blue-600 bg-white transition appearance-none">
             <option>비상주 사무실 (개인사업자)</option>
             <option>비상주 사무실 (법인사업자)</option>
             <option>상주 오피스 입주 문의</option>
@@ -218,41 +287,24 @@
         </div>
 
         <div>
-          <label class="block text-sm font-semibold text-gray-700 mb-2">남기실 말씀 (희망 계약 기간 등)</label>
-          <textarea rows="4" placeholder="예: 비상주 12개월 계약 희망하며, 업종은 전자상거래업입니다." class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white"></textarea>
+          <label class="block text-sm font-bold text-slate-700 mb-2">남기실 말씀</label>
+          <textarea rows="4" placeholder="예: 비상주 12개월 계약 희망하며, 업종은 전자상거래업입니다." class="w-full px-5 py-4 rounded-xl border border-slate-300 focus:outline-none focus:border-blue-600 focus:ring-1 focus:ring-blue-600 bg-white transition resize-none"></textarea>
         </div>
 
-        <button type="submit" class="w-full py-4 text-center font-bold text-white bg-blue-600 rounded-xl hover:bg-blue-700 shadow-md transition">
+        <button type="submit" class="w-full py-5 text-lg font-bold text-white bg-blue-700 rounded-xl hover:bg-blue-800 shadow-lg shadow-blue-900/20 transition transform hover:-translate-y-1">
           상담 신청 완료하기
         </button>
       </form>
     </div>
   </section>
 
-  <!-- Location Section -->
-  <section id="location" class="py-16 bg-gray-50 border-t border-gray-200">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-8">
-        <h3 class="text-2xl font-bold text-gray-900">오시는 길 & 안내</h3>
-        <p class="text-gray-600 mt-2">지하철역 도보 3분 초역세권에 위치하여 방문과 미팅이 편리합니다.</p>
-      </div>
-      <div class="bg-white p-6 rounded-xl border border-gray-200 max-w-xl mx-auto text-center">
-        <p class="font-semibold text-gray-800">서울특별시 서초구 강남대로 (상세 위치 상담 안내)</p>
-        <p class="text-sm text-gray-500 mt-1">지하철 2호선 / 신분당선 강남역 및 9호선 신논현역 인근</p>
-        <div class="mt-4 pt-4 border-t border-gray-100 flex justify-center gap-6 text-sm text-gray-600">
-          <span><i class="fa-solid fa-phone text-blue-600 mr-1"></i> 상담 직통전화</span>
-          <span><i class="fa-solid fa-clock text-blue-600 mr-1"></i> 평일 09:00 - 18:00</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- Footer -->
-  <footer class="bg-gray-900 text-gray-400 py-12 border-t border-gray-800 text-sm">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-3">
-      <p class="font-bold text-white tracking-wider">BRIDGE BIZ SHARING OFFICE</p>
-      <p>대표자: 김현식 | 사업자등록번호: 준비 중 | 통신판매업신고: 준비 중</p>
-      <p class="text-xs text-gray-500">© 2026 BRIDGE BIZ. All rights reserved.</p>
+  <footer class="bg-slate-900 text-slate-400 py-16 border-t border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
+      <p class="font-black text-white tracking-widest text-lg">BRIDGE BIZ</p>
+      <p class="text-sm">대표자: 김현식 | 사업자등록번호: 준비 중 | 통신판매업신고: 준비 중</p>
+      <p class="text-sm">서울특별시 서초구 강남대로 000 | 대표번호: 02-000-0000 | 이메일: info@bridgebiz.co.kr</p>
+      <p class="text-xs text-slate-500 pt-8 mt-8 border-t border-slate-800">© 2026 BRIDGE BIZ. All rights reserved.</p>
     </div>
   </footer>
 
