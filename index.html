@@ -264,37 +264,164 @@
         <p class="mt-4 text-slate-600">문의를 남겨주시면 담당자가 10분 이내로 확인 후 친절히 안내해 드립니다.</p>
       </div>
 
-      <form class="space-y-6 bg-slate-50 p-10 rounded-3xl border border-slate-200 shadow-sm" onsubmit="event.preventDefault(); alert('문의가 성공적으로 접수되었습니다. 담당자가 곧 연락드리겠습니다.');">
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-          <div>
-            <label class="block text-sm font-bold text-slate-700 mb-2">성함 또는 법인명</label>
-            <input type="text" required placeholder="홍길동 / (주)브릿지" class="w-full px-5 py-4 rounded-xl border border-slate-300 focus:outline-none focus:border-blue-600 focus:ring-1 focus:ring-blue-600 bg-white transition">
-          </div>
-          <div>
-            <label class="block text-sm font-bold text-slate-700 mb-2">연락처</label>
-            <input type="tel" required placeholder="010-0000-0000" class="w-full px-5 py-4 rounded-xl border border-slate-300 focus:outline-none focus:border-blue-600 focus:ring-1 focus:ring-blue-600 bg-white transition">
-          </div>
-        </div>
+      <form id="contactForm" class="space-y-6 bg-slate-50 p-10 rounded-3xl border border-slate-200 shadow-sm">
 
-        <div>
-          <label class="block text-sm font-bold text-slate-700 mb-2">문의 유형</label>
-          <select class="w-full px-5 py-4 rounded-xl border border-slate-300 focus:outline-none focus:border-blue-600 focus:ring-1 focus:ring-blue-600 bg-white transition appearance-none">
-            <option>비상주 사무실 (개인사업자)</option>
-            <option>비상주 사무실 (법인사업자)</option>
-            <option>상주 오피스 입주 문의</option>
-            <option>회의실 대여 문의</option>
-          </select>
-        </div>
+    <div>
+        <label class="block text-sm font-semibold text-slate-700 mb-2">
+            성함 또는 법인명
+        </label>
+        <input
+            id="name"
+            type="text"
+            required
+            placeholder="성함 또는 법인명을 입력해주세요"
+            class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-slate-900"
+        >
+    </div>
 
-        <div>
-          <label class="block text-sm font-bold text-slate-700 mb-2">남기실 말씀</label>
-          <textarea rows="4" placeholder="예: 비상주 12개월 계약 희망하며, 업종은 전자상거래업입니다." class="w-full px-5 py-4 rounded-xl border border-slate-300 focus:outline-none focus:border-blue-600 focus:ring-1 focus:ring-blue-600 bg-white transition resize-none"></textarea>
-        </div>
+    <div>
+        <label class="block text-sm font-semibold text-slate-700 mb-2">
+            연락처
+        </label>
+        <input
+            id="phone"
+            type="tel"
+            required
+            placeholder="010-0000-0000"
+            class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-slate-900"
+        >
+    </div>
 
-        <button type="submit" class="w-full py-5 text-lg font-bold text-white bg-blue-700 rounded-xl hover:bg-blue-800 shadow-lg shadow-blue-900/20 transition transform hover:-translate-y-1">
-          상담 신청 완료하기
-        </button>
-      </form>
+    <div>
+        <label class="block text-sm font-semibold text-slate-700 mb-2">
+            문의 유형
+        </label>
+        <select
+            id="inquiryType"
+            class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-slate-900"
+        >
+            <option value="비상주 개인">비상주 개인</option>
+            <option value="비상주 법인">비상주 법인</option>
+            <option value="상주 1인실">상주 1인실</option>
+            <option value="상주 2인실">상주 2인실</option>
+            <option value="상주 4인실">상주 4인실</option>
+            <option value="회의실">회의실</option>
+            <option value="기타">기타</option>
+        </select>
+    </div>
+
+    <div>
+        <label class="block text-sm font-semibold text-slate-700 mb-2">
+            남기실 말씀
+        </label>
+        <textarea
+            id="message"
+            rows="4"
+            placeholder="궁금하신 내용을 자유롭게 남겨주세요"
+            class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-slate-900"
+        ></textarea>
+    </div>
+
+    <button
+        type="submit"
+        class="w-full bg-slate-900 text-white py-4 rounded-xl font-bold hover:bg-slate-700 transition"
+    >
+        상담 신청 완료하기
+    </button>
+
+</form>
+
+<script>
+const contactForm = document.getElementById("contactForm");
+
+contactForm.addEventListener("submit", async function(event) {
+    event.preventDefault();
+
+    const submitButton = contactForm.querySelector("button[type='submit']");
+    submitButton.disabled = true;
+    submitButton.textContent = "접수 중입니다...";
+
+    const inquiryType = document.getElementById("inquiryType").value;
+
+    // 광고 추적 정보
+    const params = new URLSearchParams(window.location.search);
+
+    let channel = "직접유입";
+    const source = (params.get("utm_source") || "").toLowerCase();
+
+    if (source === "naver") {
+        channel = "네이버";
+    } else if (
+        source === "meta" ||
+        source === "facebook" ||
+        source === "instagram"
+    ) {
+        channel = "메타";
+    } else if (source === "daangn") {
+        channel = "당근";
+    } else if (source === "youtube") {
+        channel = "유튜브";
+    }
+
+    let campaign = params.get("utm_campaign") || "";
+
+    // 광고 캠페인이 없으면 문의 유형을 기준으로 자동 분류
+    if (!campaign) {
+        if (inquiryType.includes("비상주")) {
+            campaign = "비상주";
+        } else if (inquiryType.includes("상주")) {
+            campaign = "상주";
+        } else if (inquiryType === "회의실") {
+            campaign = "회의실";
+        } else {
+            campaign = "기타";
+        }
+    }
+
+    const data = {
+        name: document.getElementById("name").value.trim(),
+        phone: document.getElementById("phone").value.trim(),
+        inquiryType: inquiryType,
+        message: document.getElementById("message").value.trim(),
+
+        channel: channel,
+        campaign: campaign,
+        adContent: params.get("utm_content") || "",
+        keyword: params.get("utm_term") || ""
+    };
+
+    try {
+
+        await fetch(
+            "https://script.google.com/macros/s/AKfycbzjgWetopudg7psQX02qDpQD-SUw8NwJbXURh43yUXUZvNee011dErxz4uBloWjTJOR1w/exec",
+            {
+                method: "POST",
+                mode: "no-cors",
+                headers: {
+                    "Content-Type": "text/plain;charset=utf-8"
+                },
+                body: JSON.stringify(data)
+            }
+        );
+
+        alert("문의가 정상적으로 접수되었습니다.\n곧 연락드리겠습니다.");
+
+        contactForm.reset();
+
+    } catch (error) {
+
+        console.error(error);
+
+        alert("접수 중 문제가 발생했습니다.\n잠시 후 다시 시도해주세요.");
+
+    } finally {
+
+        submitButton.disabled = false;
+        submitButton.textContent = "상담 신청 완료하기";
+
+    }
+});
+</script>
     </div>
   </section>
 
