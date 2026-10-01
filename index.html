@@ -438,34 +438,34 @@ contactForm.addEventListener("submit", async function(event) {
 
     try {
 
-        await fetch(
-            "https://script.google.com/macros/s/AKfycbw5P-hbWNdaQKDHlD_EJBExLu1Dyoj6CtFOy5Msfzcpb0Dc5rKrxHISRA0g3pY2OZoCjg/exec",
-            {
-                method: "POST",
-                mode: "no-cors",
-                headers: {
-                    "Content-Type": "text/plain;charset=utf-8"
-                },
-                body: JSON.stringify(data)
-            }
-        );
+    await fetch(
+        "https://script.google.com/macros/s/AKfycbzjgWetopudg7psQX02qDpQD-SUw8NwJbXURh43yUXUZvNee011dErxz4uBloWjTJOR1w/exec",
+        {
+            method: "POST",
+            mode: "no-cors",
+            headers: {
+                "Content-Type": "text/plain;charset=utf-8"
+            },
+            body: JSON.stringify(data)
+        }
+    );
 
-        alert("문의가 정상적으로 접수되었습니다.\n곧 연락드리겠습니다.");
+    alert("문의가 정상적으로 접수되었습니다.\n곧 연락드리겠습니다.");
 
-        contactForm.reset();
+    contactForm.reset();
 
-    } catch (error) {
+} catch (error) {
 
-        console.error(error);
+    console.error(error);
 
-        alert("접수 중 문제가 발생했습니다.\n잠시 후 다시 시도해주세요.");
+    alert("접수 중 문제가 발생했습니다.\n잠시 후 다시 시도해주세요.");
 
-    } finally {
+} finally {
 
-        submitButton.disabled = false;
-        submitButton.textContent = "상담 신청 완료하기";
+    submitButton.disabled = false;
+    submitButton.textContent = "상담 신청 완료하기";
 
-    }
+}
 });
 </script>
     </div>
