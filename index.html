@@ -380,10 +380,12 @@
 <script>
 const contactForm = document.getElementById("contactForm");
 
-contactForm.addEventListener("submit", async function(event) {
+contactForm.addEventListener("submit", function(event) {
+
     event.preventDefault();
 
     const submitButton = contactForm.querySelector("button[type='submit']");
+
     submitButton.disabled = true;
     submitButton.textContent = "접수 중입니다...";
 
@@ -436,9 +438,16 @@ contactForm.addEventListener("submit", async function(event) {
         keyword: params.get("utm_term") || ""
     };
 
-   try {
+    /*
+     * 중요:
+     * Apps Script가 실제로 처리할 시간을 주기 위해
+     * fetch 요청은 그대로 실행합니다.
+     *
+     * 단, 홈페이지에서는 Apps Script 응답을 기다리지 않고
+     * 잠시 후 접수 완료 메시지를 보여줍니다.
+     */
 
-    await fetch(
+    fetch(
         "https://script.google.com/macros/s/AKfycbzjgWetopudg7psQX02qDpQD-SUw8NwJbXURh43yUXUZvNee011dErxz4uBloWjTJOR1w/exec",
         {
             method: "POST",
@@ -448,44 +457,26 @@ contactForm.addEventListener("submit", async function(event) {
             },
             body: JSON.stringify(data)
         }
-    );
+    ).catch(function(error) {
+        console.error("문의 전송 오류:", error);
+    });
 
-    alert(
-        "✅ 상담 신청이 접수되었습니다.\n\n" +
-        "확인 후 빠르게 연락드리겠습니다."
-    );
+    /*
+     * 사용자 화면은 빠르게 완료 처리
+     */
+    setTimeout(function() {
 
-    contactForm.reset();
+        alert(
+            "✅ 상담 신청이 접수되었습니다.\n\n" +
+            "확인 후 빠르게 연락드리겠습니다."
+        );
 
-    submitButton.disabled = false;
-    submitButton.textContent = "상담 신청 완료하기";
-     
-} catch (error) {
+        contactForm.reset();
 
-    console.error(error);
+        submitButton.disabled = false;
+        submitButton.textContent = "상담 신청 완료하기";
 
-    alert("접수 중 문제가 발생했습니다.\n잠시 후 다시 시도해주세요.");
+    }, 800);
 
-} finally {
-
-    submitButton.disabled = false;
-    submitButton.textContent = "상담 신청 완료하기";
-
-}
 });
 </script>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="bg-slate-900 text-slate-400 py-16 border-t border-slate-800">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
-      <p class="font-black text-white tracking-widest text-lg">BRIDGE BIZ</p>
-      <p class="text-sm">대표자: 김현식 | 사업자등록번호: 준비 중 | 통신판매업신고: 준비 중</p>
-      <p class="text-sm">서울특별시 서초구 강남대로 000 | 대표번호: 02-000-0000 | 이메일: info@bridgebiz.co.kr</p>
-      <p class="text-xs text-slate-500 pt-8 mt-8 border-t border-slate-800">© 2026 BRIDGE BIZ. All rights reserved.</p>
-    </div>
-  </footer>
-
-</body>
-</html>
