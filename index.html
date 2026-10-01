@@ -15,52 +15,98 @@
 </head>
 <body class="bg-slate-50 text-slate-800 antialiased">
 
-  <!-- Header -->
-  <header class="fixed w-full top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200 shadow-sm transition-all">
+ <!-- Header -->
+  <header class="fixed w-full top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
+
+      <!-- Logo -->
       <div class="flex items-center gap-2 cursor-pointer" onclick="window.scrollTo(0,0)">
-        <span class="text-2xl font-black tracking-tighter text-blue-700">BRIDGE<span class="text-slate-900">BIZ</span></span>
+        <div class="text-2xl font-black tracking-tight text-slate-900">
+          BIZ<span class="text-blue-700">STORY</span>
+        </div>
       </div>
+
+      <!-- Menu -->
       <nav class="hidden md:flex items-center gap-8 text-[15px] font-semibold text-slate-600">
         <a href="#services" class="hover:text-blue-700 transition">서비스 안내</a>
-        <a href="#pricing" class="hover:text-blue-700 transition">이용 요금</a>
+        <a href="#pricing" class="hover:text-blue-700 transition">비상주 오피스</a>
         <a href="#location" class="hover:text-blue-700 transition">오시는 길</a>
       </nav>
+
+      <!-- CTA -->
       <div>
-        <a href="#contact" class="inline-flex items-center justify-center px-5 py-2.5 text-sm font-bold text-white bg-blue-700 rounded-lg shadow-md hover:bg-blue-800 transition transform hover:-translate-y-0.5">
-          입주·상담 신청
+        <a href="#contact"
+           class="inline-flex items-center justify-center px-5 py-2.5 text-sm font-bold text-white bg-blue-700 rounded-lg shadow-md hover:bg-blue-800 transition">
+          상담 신청
         </a>
       </div>
+
     </div>
   </header>
 
+
   <!-- Hero Section -->
-  <section class="relative h-screen min-h-[600px] max-h-[900px] flex items-center justify-center pt-16">
-    <!-- 배경 이미지 -->
+  <section class="relative min-h-screen flex items-center justify-center pt-16">
+
+    <!-- Background Image -->
     <div class="absolute inset-0 z-0">
-      <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1920" alt="프리미엄 오피스 배경" class="w-full h-full object-cover" />
-      <div class="absolute inset-0 bg-slate-900/70"></div>
+      <img
+        src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1920"
+        alt="비즈스토리 프리미엄 오피스"
+        class="w-full h-full object-cover"
+      />
+
+      <!-- Dark Overlay -->
+      <div class="absolute inset-0 bg-slate-950/70"></div>
     </div>
-    <!-- 텍스트 콘텐츠 -->
-    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mt-10">
-      <span class="inline-block px-4 py-1.5 text-sm font-bold text-blue-200 bg-blue-900/50 border border-blue-700/50 rounded-full mb-6 backdrop-blur-sm">
-        신규 사업자 & 법인 설립 맞춤 솔루션
-      </span>
-      <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-tight drop-shadow-lg">
-        성공적인 비즈니스를 위한 <br class="hidden sm:block" />
-        <span class="text-blue-400">가장 스마트한 업무 공간</span>
-      </h1>
-      <p class="mt-6 text-lg sm:text-xl text-slate-300 max-w-2xl mx-auto drop-shadow-md">
-        강남 초역세권 프리미엄 비상주 오피스부터 독립형 상주 사무실까지, 합리적인 비용과 검증된 인프라를 지원합니다.
+
+
+    <!-- Hero Content -->
+    <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+
+      <!-- Brand Message -->
+      <p class="text-sm sm:text-base font-semibold tracking-[0.25em] text-blue-300 uppercase mb-6">
+        Your Business starts here.
       </p>
+
+      <!-- Main Title -->
+      <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-tight">
+        당신의 비즈니스가
+        <br />
+        <span class="text-blue-400">시작되는 곳</span>
+      </h1>
+
+      <!-- Description -->
+      <p class="mt-7 text-lg sm:text-xl text-slate-200 max-w-2xl mx-auto leading-relaxed">
+        강남역 인근 프리미엄 비상주·상주 공유오피스
+        <br class="hidden sm:block" />
+        사업자등록 주소부터 업무공간과 비즈니스 지원까지 함께합니다.
+      </p>
+
+
+      <!-- Buttons -->
       <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
-        <a href="#pricing" class="px-8 py-4 text-base font-bold text-white bg-blue-600 rounded-xl shadow-lg shadow-blue-900/20 hover:bg-blue-700 transition transform hover:-translate-y-1">
-          요금제 확인하기
+
+        <a href="#pricing"
+           class="px-8 py-4 text-base font-bold text-white bg-blue-600 rounded-xl shadow-lg hover:bg-blue-700 transition transform hover:-translate-y-1">
+          비상주 오피스 알아보기
         </a>
-        <a href="#contact" class="px-8 py-4 text-base font-bold text-slate-900 bg-white rounded-xl shadow-lg hover:bg-slate-50 transition transform hover:-translate-y-1">
-          비상주 온라인 간편 신청
+
+        <a href="#contact"
+           class="px-8 py-4 text-base font-bold text-slate-900 bg-white rounded-xl shadow-lg hover:bg-slate-50 transition transform hover:-translate-y-1">
+          상담 신청하기
         </a>
+
       </div>
+
+
+      <!-- Small Trust Message -->
+      <div class="mt-12 flex flex-wrap justify-center gap-x-8 gap-y-3 text-sm text-slate-300">
+        <span>✓ 강남역 인근</span>
+        <span>✓ 비상주·상주 오피스</span>
+        <span>✓ 사업자등록 지원</span>
+      </div>
+
     </div>
   </section>
 
