@@ -881,7 +881,6 @@ contactForm.addEventListener("submit", function(event) {
 
 
 function searchIndustry() {
-
   const input = document.getElementById("industrySearch");
   const keyword = input.value.trim().toLowerCase();
 
@@ -891,12 +890,16 @@ function searchIndustry() {
     return;
   }
 
- const result = industryData.find(item =>
-  item.code.toLowerCase() === keyword ||
-  item.name.toLowerCase().includes(keyword) ||
-  item.keywords.some(k => k.toLowerCase().includes(keyword))
-);
+  const result = industryData.find(item =>
+    item.code.toLowerCase() === keyword ||
+    item.name.toLowerCase().includes(keyword) ||
+    item.keywords.some(k => k.toLowerCase().includes(keyword))
+  );
 
+  // 업종조회 기록
+  logIndustrySearchToSheet(keyword, result);
+
+  // 검색 결과 표시
   showIndustryReport(result, keyword);
 }
 
