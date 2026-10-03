@@ -903,6 +903,28 @@ function searchIndustry() {
   showIndustryReport(result, keyword);
 }
 
+  function logIndustrySearchToSheet(keyword, result) {
+  const data = {
+    keyword: keyword,
+    name: result ? result.name : "",
+    code: result ? result.code : "",
+    result: result ? "검색성공" : "미등록"
+  };
+
+  fetch(APPS_SCRIPT_URL, {
+    method: "POST",
+    mode: "no-cors",
+    headers: {
+      "Content-Type": "text/plain;charset=utf-8"
+    },
+    body: JSON.stringify({
+      type: "industrySearch",
+      ...data
+    })
+  }).catch(function(error) {
+    console.error("업종조회 기록 오류:", error);
+  });
+}
 
 function showIndustryReport(result, keyword) {
 
