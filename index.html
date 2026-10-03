@@ -879,7 +879,6 @@ contactForm.addEventListener("submit", function(event) {
 
 ];
 
-// 구글 Apps Script 주소 (문의폼과 동일한 URL 사용, 필요하면 업종조회용 별도 URL로 교체)
 const APPS_SCRIPT_URL =
   "https://script.google.com/macros/s/AKfycbw5P-hbWNdaQKDHlD_EJBExLu1Dyoj6CtFOy5Msfzcpb0Dc5rKrxHISRA0g3pY2OZoCjg/exec";
 
@@ -893,17 +892,21 @@ function searchIndustry() {
     return;
   }
 
-  // 업종코드 일치, 업종명 포함, 키워드 포함 순으로 검색
-  const result = industryData.find(item =>
-    item.code.toLowerCase() === keyword ||
-    item.name.toLowerCase().includes(keyword) ||
-    item.keywords.some(k => k.toLowerCase().includes(keyword) || keyword.includes(k.toLowerCase()))
-  );
+  const result = industryData.find(function (item) {
+    return (
+      item.code.toLowerCase() === keyword ||
+      item.name.toLowerCase().includes(keyword) ||
+      item.keywords.some(function (k) {
+        const kw = k.toLowerCase();
+        return kw.includes(keyword) || keyword.includes(kw);
+      })
+    );
+  });
 
-  // 1) 먼저 화면에 결과 표시 (기록 실패해도 화면은 정상 동작)
+  // 1) 화면 표시가 먼저
   showIndustryReport(result, keyword);
 
-  // 2) 구글시트 기록 (실패해도 무시)
+  // 2) 시트 기록은 실패해도 화면에 영향 없음
   try {
     logIndustrySearchToSheet(keyword, result);
   } catch (e) {
@@ -919,7 +922,7 @@ function logIndustrySearchToSheet(keyword, result) {
     keyword: keyword,
     matchedName: result ? result.name : "결과없음",
     matchedCode: result ? result.code : "",
-    status: result ? result.status : "",
+    status: result ? result.status : "결과없음",
     channel: params.get("utm_source") || "직접유입",
     campaign: params.get("utm_campaign") || ""
   };
@@ -934,130 +937,55 @@ function logIndustrySearchToSheet(keyword, result) {
   });
 }
 
-  showIndustryReport(result, keyword);
-}
-
-  // 업종조회 기록
-  logIndustrySearchToSheet(keyword, result);
-
-  // 검색 결과 표시
-  showIndustryReport(result, keyword);
-}
-
- 
-  
-  fetch(APPS_SCRIPT_URL, {
-    method: "POST",
-    mode: "no-cors",
-    headers: {
-      "Content-Type": "text/plain;charset=utf-8"
-    },
-    body: JSON.stringify({
-      type: "industrySearch",
-      ...data
-    })
-  }).catch(function(error) {
-    console.error("업종조회 기록 오류:", error);
-  });
-}
-
 function showIndustryReport(result, keyword) {
-
   let html = "";
 
   if (result) {
-
     const statusColor =
       result.statusClass === "green"
         ? "bg-green-100 text-green-700"
         : "bg-yellow-100 text-yellow-700";
 
     html = `
-      <div class="text-sm text-slate-500 mb-2">
-        업종 상세 분석 리포트
-      </div>
-
-      <h2 class="text-2xl font-extrabold text-slate-900">
-        ${result.name}
-      </h2>
-
-      <div class="mt-2 text-sm text-slate-500">
-        업종코드 ${result.code}
-      </div>
-
+      <div class="text-sm text-slate-500 mb-2">업종 상세 분석 리포트</div>
+      <h2 class="text-2xl font-extrabold text-slate-900">${result.name}</h2>
+      <div class="mt-2 text-sm text-slate-500">업종코드 ${result.code}</div>
       <div class="mt-6">
-        <span class="inline-block px-4 py-2 rounded-full font-bold ${statusColor}">
-          ${result.status}
-        </span>
+        <span class="inline-block px-4 py-2 rounded-full font-bold ${statusColor}">${result.status}</span>
       </div>
-
       <div class="mt-7 p-5 rounded-xl bg-slate-50">
-        <h3 class="font-bold text-slate-900 mb-2">
-          BizStory Comment
-        </h3>
-        <p class="text-slate-600 leading-relaxed">
-          ${result.comment}
-        </p>
+        <h3 class="font-bold text-slate-900 mb-2">BizStory Comment</h3>
+        <p class="text-slate-600 leading-relaxed">${result.comment}</p>
       </div>
-
       <div class="mt-5">
-        <h3 class="font-bold text-slate-900 mb-2">
-          사업자등록 체크사항
-        </h3>
-        <p class="text-slate-600 leading-relaxed">
-          ${result.check}
-        </p>
+        <h3 class="font-bold text-slate-900 mb-2">사업자등록 체크사항</h3>
+        <p class="text-slate-600 leading-relaxed">${result.check}</p>
       </div>
-
       <div class="mt-5">
-        <h3 class="font-bold text-slate-900 mb-2">
-          세무 TIP
-        </h3>
-        <p class="text-slate-600 leading-relaxed">
-          ${result.tip}
-        </p>
+        <h3 class="font-bold text-slate-900 mb-2">세무 TIP</h3>
+        <p class="text-slate-600 leading-relaxed">${result.tip}</p>
       </div>
-
-      <a
-        href="#contact"
-        onclick="closeIndustryReport()"
-        class="block mt-8 w-full text-center px-5 py-4 bg-blue-700 text-white font-bold rounded-xl hover:bg-blue-800 transition"
-      >
+      <a href="#contact" onclick="closeIndustryReport()"
+         class="block mt-8 w-full text-center px-5 py-4 bg-blue-700 text-white font-bold rounded-xl hover:bg-blue-800 transition">
         비상주 등록 상담하기
       </a>
     `;
-
   } else {
-
     html = `
-      <div class="text-sm text-slate-500 mb-2">
-        업종 상세 분석 리포트
-      </div>
-
+      <div class="text-sm text-slate-500 mb-2">업종 상세 분석 리포트</div>
       <div class="mt-8 text-center">
-
         <div class="text-5xl mb-5">🔎</div>
-
-        <h2 class="text-xl font-extrabold text-slate-900">
-          검색 결과를 찾지 못했습니다.
-        </h2>
-
+        <h2 class="text-xl font-extrabold text-slate-900">검색 결과를 찾지 못했습니다.</h2>
         <p class="mt-4 text-slate-600 leading-relaxed">
-          입력하신 업종은 현재 비즈스토리의
-          업종 DB에 등록되어 있지 않습니다.
+          입력하신 업종은 현재 비즈스토리의 업종 DB에 등록되어 있지 않습니다.
         </p>
-
         <p class="mt-4 text-slate-600 leading-relaxed">
-          20년 세무사무실 경험을 바탕으로<br>
-          비상주 가능 여부를 확인해 드립니다.
+          20년 세무사무실 경험을 바탕으로<br>비상주 가능 여부를 확인해 드립니다.
         </p>
-
-    <a
-  href="#contact"
-  class="block mt-8 w-full text-center px-5 py-4 bg-blue-700 text-white font-bold rounded-xl hover:bg-blue-800 transition"
->
-  비상주 등록 상담하기
-</a>
+        <a href="#contact" onclick="closeIndustryReport()"
+           class="block mt-8 w-full text-center px-5 py-4 bg-blue-700 text-white font-bold rounded-xl hover:bg-blue-800 transition">
+          비상주 등록 상담하기
+        </a>
       </div>
     `;
   }
@@ -1065,30 +993,17 @@ function showIndustryReport(result, keyword) {
   let panel = document.getElementById("industryReportPanel");
 
   if (!panel) {
-
     panel = document.createElement("div");
-
     panel.id = "industryReportPanel";
-
     panel.className =
       "fixed top-0 right-0 z-[100] h-full w-full sm:w-[480px] bg-white shadow-2xl overflow-y-auto transform translate-x-full transition-transform duration-300";
 
     panel.innerHTML = `
       <div class="sticky top-0 bg-white border-b border-slate-200 px-6 py-5 flex items-center justify-between">
-        <strong class="text-lg text-slate-900">
-          업종 상세 분석
-        </strong>
-
-        <button
-          onclick="closeIndustryReport()"
-          class="text-2xl text-slate-500 hover:text-slate-900"
-        >
-          ×
-        </button>
+        <strong class="text-lg text-slate-900">업종 상세 분석</strong>
+        <button onclick="closeIndustryReport()" class="text-2xl text-slate-500 hover:text-slate-900">×</button>
       </div>
-
-      <div id="industryReportContent" class="p-6">
-      </div>
+      <div id="industryReportContent" class="p-6"></div>
     `;
 
     document.body.appendChild(panel);
@@ -1096,20 +1011,21 @@ function showIndustryReport(result, keyword) {
 
   document.getElementById("industryReportContent").innerHTML = html;
 
-  setTimeout(function() {
+  setTimeout(function () {
     panel.classList.remove("translate-x-full");
   }, 10);
 }
 
-
 function closeIndustryReport() {
-
   const panel = document.getElementById("industryReportPanel");
-
   if (panel) {
     panel.classList.add("translate-x-full");
   }
 }
-  
 </script>
-</div></section></body></html>
+
+    </div>
+  </section>
+
+</body>
+</html>
