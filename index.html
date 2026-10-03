@@ -892,11 +892,11 @@ function searchIndustry() {
 
   const result = industryData.find(item =>
     item.code.toLowerCase() === keyword ||
-    item.name.toLowerCase().includes(keyword) ||
-    (item.keywords || []).some(k =>
-      k.toLowerCase().includes(keyword)
-    )
+    item.name.toLowerCase().includes(keyword)
   );
+
+  showIndustryReport(result, keyword);
+}
 
   // 업종조회 기록
   logIndustrySearchToSheet(keyword, result);
