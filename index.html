@@ -732,36 +732,5 @@ function closeIndustryReport() {
     panel.classList.add("translate-x-full");
   }
 }
-  let selectedIndustry = null;
-
-function prepareIndustryConsultation() {
-  const input = document.getElementById("industrySearch");
-  const messageBox = document.getElementById("message");
-
-  if (!input || !messageBox) {
-    alert("상담 입력창을 찾을 수 없습니다.");
-    return;
-  }
-
-  const keyword = input.value.trim().toLowerCase();
-
-  selectedIndustry = industryData.find(item =>
-    item.code.toLowerCase() === keyword ||
-    item.name.toLowerCase().includes(keyword)
-  );
-
-  if (selectedIndustry) {
-    messageBox.value =
-      "[업종조회 상담]\n\n" +
-      "업종명: " + selectedIndustry.name + "\n" +
-      "업종코드: " + selectedIndustry.code + "\n" +
-      "비상주 판정: " + selectedIndustry.status + "\n\n" +
-      "상담 요청드립니다.";
-  } else {
-    messageBox.value =
-      "[업종조회 상담]\n\n" +
-      "조회 업종: " + input.value + "\n" +
-      "비상주 가능 여부 확인을 요청합니다.";
-  }
-}
+  
 </script>
