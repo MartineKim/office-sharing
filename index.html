@@ -906,14 +906,7 @@ function searchIndustry() {
 }
 
  
-  function logIndustrySearchToSheet(keyword, result) {
-  const data = {
-    keyword: keyword,
-    name: result ? result.name : "",
-    code: result ? result.code : "",
-    result: result ? "검색성공" : "미등록"
-  };
-
+  
   fetch(APPS_SCRIPT_URL, {
     method: "POST",
     mode: "no-cors",
