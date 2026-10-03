@@ -288,7 +288,7 @@
               </div>
               <div>
                 <h4 class="font-bold text-slate-900 mb-1">도로명 주소</h4>
-                <p class="text-slate-600 text-sm">서울특별시 서초구 강남대로 000, 00빌딩 00층</p>
+                <p class="text-slate-600 text-sm">서울특별시 강남구 테헤란로6길 26, 3층</p>
               </div>
             </div>
 
@@ -314,20 +314,16 @@
           </div>
         </div>
 
-        <!-- 이미지 영역 (임시 지도 대체용 빌딩/지도 이미지) -->
-        <div class="relative h-[500px] rounded-3xl overflow-hidden shadow-2xl border border-slate-200">
-          <img src="https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&q=80&w=1000" alt="지도 위치" class="w-full h-full object-cover">
-          <div class="absolute inset-0 bg-blue-900/10"></div>
-          
-          <!-- UI 마커 포인트 -->
-          <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex flex-col items-center animate-bounce">
-            <div class="bg-slate-900 text-white px-5 py-2.5 rounded-xl font-bold shadow-xl mb-3 text-sm tracking-wide">
-              BRIDGE BIZ
-            </div>
-            <div class="w-4 h-4 bg-slate-900 rotate-45 -mt-5"></div>
-            <div class="w-6 h-6 bg-blue-600 rounded-full border-4 border-white shadow-lg mt-2"></div>
-          </div>
-        </div>
+       <!-- 네이버 지도 -->
+<div class="relative h-[500px] rounded-3xl overflow-hidden shadow-2xl border border-slate-200 bg-slate-100">
+  <div id="naverMap" class="w-full h-full"></div>
+
+  <a href="https://map.naver.com/p/search/%EC%84%9C%EC%9A%B8%20%EA%B0%95%EB%82%A8%EA%B5%AC%20%ED%85%8C%ED%97%A4%EB%9E%80%EB%A1%9C6%EA%B8%B8%2026"
+     target="_blank" rel="noopener"
+     class="absolute bottom-4 right-4 z-10 px-4 py-2.5 bg-white text-slate-900 text-sm font-bold rounded-xl shadow-lg hover:bg-slate-50 transition">
+    네이버지도에서 크게 보기
+  </a>
+</div>
       </div>
     </div>
   </section>
@@ -1026,6 +1022,59 @@ function closeIndustryReport() {
 
     </div>
   </section>
+<script src="https://oapi.map.naver.com/openapi/v3/maps.js?ncpKeyId=발급받은_KEY&submodules=geocoder"></script>
+<script>
+  const BIZ_ADDRESS = "서울 강남구 테헤란로6길 26";
 
+  function showMapFallback() {
+    const el = document.getElementById("naverMap");
+    if (!el) return;
+    el.innerHTML =
+      '<div class="w-full h-full flex flex-col items-center justify-center text-center p-6 text-slate-600">' +
+      '<div class="text-4xl mb-3">📍</div>' +
+      '<p class="font-bold text-slate-900">서울 강남구 테헤란로6길 26, 3층</p>' +
+      '<p class="text-sm mt-2">지도를 불러오지 못했습니다.<br>아래 버튼으로 네이버지도에서 확인해 주세요.</p>' +
+      '</div>';
+  }
+
+  // 인증 실패(등록하지 않은 URL, 잘못된 키) 시 자동 호출
+  window.navermap_authFailure = showMapFallback;
+
+  function initNaverMap() {
+    if (!window.naver || !naver.maps) {
+      showMapFallback();
+      return;
+    }
+
+    const map = new naver.maps.Map("naverMap", {
+      center: new naver.maps.LatLng(37.4985, 127.0290), // 주소 검색 전 임시 중심
+      zoom: 17,
+      zoomControl: true,
+      zoomControlOptions: { position: naver.maps.Position.TOP_RIGHT }
+    });
+
+    naver.maps.Service.geocode({ query: BIZ_ADDRESS }, function (status, response) {
+      if (status !== naver.maps.Service.Status.OK || !response.v2.addresses.length) {
+        return;
+      }
+
+      const addr = response.v2.addresses[0];
+      const pos = new naver.maps.LatLng(addr.y, addr.x);
+
+      map.setCenter(pos);
+
+      const marker = new naver.maps.Marker({ position: pos, map: map });
+
+      const info = new naver.maps.InfoWindow({
+        content:
+          '<div style="padding:10px 14px;font-weight:700;font-size:14px;">BIZSTORY' +
+          '<br><span style="font-weight:400;font-size:12px;color:#475569;">테헤란로6길 26, 3층</span></div>'
+      });
+      info.open(map, marker);
+    });
+  }
+
+  window.addEventListener("load", initNaverMap);
+</script>
 </body>
 </html>
