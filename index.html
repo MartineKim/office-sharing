@@ -905,13 +905,7 @@ function searchIndustry() {
   showIndustryReport(result, keyword);
 }
 
-  // 업종조회 기록
-  logIndustrySearchToSheet(keyword, result);
-
-  // 검색 결과 표시
-  showIndustryReport(result, keyword);
-}
-
+ 
   function logIndustrySearchToSheet(keyword, result) {
   const data = {
     keyword: keyword,
