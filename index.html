@@ -879,6 +879,9 @@ contactForm.addEventListener("submit", function(event) {
 
 ];
 
+// 구글 Apps Script 주소 (문의폼과 동일한 URL 사용, 필요하면 업종조회용 별도 URL로 교체)
+const APPS_SCRIPT_URL =
+  "https://script.google.com/macros/s/AKfycbw5P-hbWNdaQKDHlD_EJBExLu1Dyoj6CtFOy5Msfzcpb0Dc5rKrxHISRA0g3pY2OZoCjg/exec";
 
 function searchIndustry() {
   const input = document.getElementById("industrySearch");
@@ -890,10 +893,46 @@ function searchIndustry() {
     return;
   }
 
+  // 업종코드 일치, 업종명 포함, 키워드 포함 순으로 검색
   const result = industryData.find(item =>
     item.code.toLowerCase() === keyword ||
-    item.name.toLowerCase().includes(keyword)
+    item.name.toLowerCase().includes(keyword) ||
+    item.keywords.some(k => k.toLowerCase().includes(keyword) || keyword.includes(k.toLowerCase()))
   );
+
+  // 1) 먼저 화면에 결과 표시 (기록 실패해도 화면은 정상 동작)
+  showIndustryReport(result, keyword);
+
+  // 2) 구글시트 기록 (실패해도 무시)
+  try {
+    logIndustrySearchToSheet(keyword, result);
+  } catch (e) {
+    console.error("업종조회 기록 오류:", e);
+  }
+}
+
+function logIndustrySearchToSheet(keyword, result) {
+  const params = new URLSearchParams(window.location.search);
+
+  const data = {
+    type: "industrySearch",
+    keyword: keyword,
+    matchedName: result ? result.name : "결과없음",
+    matchedCode: result ? result.code : "",
+    status: result ? result.status : "",
+    channel: params.get("utm_source") || "직접유입",
+    campaign: params.get("utm_campaign") || ""
+  };
+
+  fetch(APPS_SCRIPT_URL, {
+    method: "POST",
+    mode: "no-cors",
+    headers: { "Content-Type": "text/plain;charset=utf-8" },
+    body: JSON.stringify(data)
+  }).catch(function (error) {
+    console.error("업종조회 기록 오류:", error);
+  });
+}
 
   showIndustryReport(result, keyword);
 }
@@ -1073,3 +1112,4 @@ function closeIndustryReport() {
 }
   
 </script>
+</div></section></body></html>
