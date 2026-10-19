@@ -308,7 +308,37 @@
   </div>
 </footer>
 <button type="button" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="맨 위로 이동" class="fixed bottom-24 right-5 z-40 w-12 h-12 rounded-2xl bg-white border-2 border-blue-600 text-blue-900 text-2xl font-bold shadow-lg hover:bg-blue-50">↑</button>
-<button type="button" onclick="openConsultModal()" aria-label="상담 문의 열기" class="fixed bottom-5 right-5 z-40 w-12 h-12 rounded-full bg-indigo-950 border border-indigo-500 text-white shadow-lg hover:bg-indigo-900"><i class="fa-solid fa-comment-dots text-xl" aria-hidden="true"></i></button>
+<div class="fixed bottom-5 right-5 z-40 flex flex-col items-end gap-3" id="bizChatWidget">
+  <div id="bizChatPanel" role="dialog" aria-label="비즈스토리 상담창" aria-hidden="true" class="hidden w-[min(360px,calc(100vw-40px))] rounded-[24px] bg-[#f6f6f8] shadow-2xl border border-slate-200 overflow-hidden mb-1">
+    <div class="flex justify-between items-start px-5 pt-5 pb-3">
+      <div><div class="flex items-center gap-2"><span class="w-9 h-9 rounded-full bg-white flex items-center justify-center text-blue-700 font-black">B</span><strong class="text-xl text-slate-900">비즈스토리</strong></div><p class="text-xs text-slate-500 mt-2 ml-1">24시간 문의 접수 가능 · 답변은 운영시간 중</p></div>
+      <button type="button" onclick="toggleBizChat(false)" class="text-slate-500 text-2xl leading-none px-2" aria-label="채팅창 닫기">×</button>
+    </div>
+    <div class="mx-3 mb-3 bg-white rounded-2xl p-4">
+      <p class="text-sm font-bold text-slate-900">비즈스토리</p><p class="text-sm text-slate-700 mt-2 leading-relaxed">안녕하세요! 비상주사무실과 공유오피스 상담을 도와드릴게요.</p>
+      <a id="bizKakaoLink" href="#" onclick="return openBizKakao(event)" class="mt-5 block w-full text-center bg-[#111052] hover:bg-indigo-900 text-white font-bold rounded-xl py-3">카카오톡으로 문의하기 ↗</a>
+      <p class="text-xs text-center text-slate-400 mt-3">카카오톡 채널 연결 준비 중</p>
+    </div>
+    <div class="mx-3 mb-4 bg-white rounded-2xl p-4"><p class="text-xs text-slate-500 mb-3">다른 방법으로 문의</p><button type="button" onclick="toggleBizChat(false);openConsultModal()" class="w-full rounded-xl bg-blue-700 text-white py-3 font-bold">홈페이지 상담 신청</button></div>
+  </div>
+  <button type="button" onclick="toggleBizChat()" id="bizChatToggle" aria-controls="bizChatPanel" aria-expanded="false" aria-label="채팅 상담 열기" class="w-14 h-14 rounded-full bg-indigo-950 border border-indigo-500 text-white shadow-xl hover:bg-indigo-900 flex items-center justify-center"><i class="fa-solid fa-comment-dots text-2xl" aria-hidden="true"></i></button>
+</div>
+<script>
+  // 카카오톡 채널 관리자에서 받은 채팅 URL을 여기에 입력하세요.
+  const BIZSTORY_KAKAO_CHAT_URL = "";
+  function toggleBizChat(force) {
+    const panel=document.getElementById("bizChatPanel"),button=document.getElementById("bizChatToggle");
+    const open=typeof force==="boolean"?force:panel.classList.contains("hidden");
+    panel.classList.toggle("hidden",!open);panel.setAttribute("aria-hidden",String(!open));button.setAttribute("aria-expanded",String(open));
+    button.setAttribute("aria-label",open?"채팅 상담 닫기":"채팅 상담 열기");
+  }
+  function openBizKakao(event) {
+    if(!/^https:\/\//.test(BIZSTORY_KAKAO_CHAT_URL)) {
+      event.preventDefault();alert("카카오톡 상담 채널을 준비 중입니다. 아래 홈페이지 상담 신청을 이용해 주세요.");return false;
+    }
+    const link=document.getElementById("bizKakaoLink");link.href=BIZSTORY_KAKAO_CHAT_URL;link.target="_blank";link.rel="noopener noreferrer";return true;
+  }
+</script>
   <!-- 상담 모달 -->
   <div id="consultModal" class="fixed inset-0 z-[120] hidden" aria-hidden="true">
     <div class="absolute inset-0 bg-slate-950/60 backdrop-blur-sm" onclick="closeConsultModal()"></div>
