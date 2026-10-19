@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://office-sharing.pages.dev/sitemap.xml
