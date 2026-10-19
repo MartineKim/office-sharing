@@ -11,6 +11,9 @@
   <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
   <style>
     html { scroll-behavior: smooth; font-family: 'Pretendard', sans-serif; }
+    @keyframes consult-bounce { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
+    .consult-bounce { display:inline-block; animation:consult-bounce 1.5s ease-in-out infinite; }
+    @media (prefers-reduced-motion: reduce) { .consult-bounce { animation: none; } }
   </style>
 </head>
 <body class="bg-slate-50 text-slate-800 antialiased">
@@ -34,10 +37,11 @@
       </nav>
 
       <!-- CTA -->
-      <div>
+      <div class="flex flex-col items-center gap-1">
+        <span class="consult-bounce text-[11px] sm:text-xs font-bold text-blue-700" aria-label="24시간 상담 접수 가능">24시간 상담 가능</span>
         <a href="#" onclick="openConsultModal(); return false;"
            class="inline-flex items-center justify-center px-5 py-2.5 text-sm font-bold text-white bg-blue-700 rounded-lg shadow-md hover:bg-blue-800 transition">
-          상담 신청
+          지금 문의하기
         </a>
       </div>
 
