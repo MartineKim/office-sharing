@@ -25,16 +25,12 @@
         const host=new URL(document.referrer).hostname.toLowerCase();
         if(host!==location.hostname && !host.endsWith("."+location.hostname)){
           const domains=[
-            [/\\.naver\\.com$|^naver\\.com$/,"naver"],
-            [/\\.google\\.com$|^google\\.com$|\\.google\\.co\\.kr$/,"google"],
-            [/\\.instagram\\.com$|^instagram\\.com$/,"instagram"],
-            [/\\.facebook\\.com$|^facebook\\.com$/,"facebook"],
-            [/\\.youtube\\.com$|^youtube\\.com$/,"youtube"],
-            [/\\.threads\\.net$|^threads\\.net$/,"threads"],
-            [/\\.daangn\\.com$|^daangn\\.com$/,"daangn"],
-            [/\\.kakao\\.com$|^kakao\\.com$/,"kakao"]
+            ["naver.com","naver"],["google.com","google"],["google.co.kr","google"],
+            ["instagram.com","instagram"],["facebook.com","facebook"],
+            ["youtube.com","youtube"],["threads.net","threads"],
+            ["daangn.com","daangn"],["kakao.com","kakao"]
           ];
-          const found=domains.find(([pattern])=>pattern.test(host));
+          const found=domains.find(([domain])=>host===domain||host.endsWith("."+domain));
           if(found)data.utm_source=found[1];
         }
       }catch(_){}
