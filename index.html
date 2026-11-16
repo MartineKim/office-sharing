@@ -377,7 +377,7 @@ function selectPricingConsult(type,months){const inquiry=document.getElementById
     </div>
   </div>
 
-  <script src="/assets/lead.js?v=20261116-restore"></script>
+  <script src="/assets/lead.js?v=20261116-fast"></script>
 <script>
   function openConsultModal(options = {}) {
     const modal = document.getElementById("consultModal");
@@ -397,7 +397,7 @@ const inquiryType=document.getElementById("inquiryType").value,params=new URLSea
 const channel=source==="naver"?"네이버":source==="instagram"?"인스타그램":source==="meta"||source==="facebook"?"메타":source==="daangn"?"당근":source==="youtube"?"유튜브":source==="threads"?"Threads":"직접유입";
 let campaign=params.get("utm_campaign")||"";if(!campaign)campaign=inquiryType.includes("비상주")?"비상주":inquiryType.includes("상주")?"상주":inquiryType==="회의실"?"회의실":inquiryType.includes("업종")?"업종조회":"기타";
 const data={type:"lead",name:document.getElementById("name").value.trim(),phone:document.getElementById("phone").value.trim(),inquiryType,message:document.getElementById("message").value.trim(),channel,campaign,adContent:params.get("utm_content")||"",keyword:params.get("utm_term")||"",website:document.getElementById("website").value,consent:true};
-try{const result=await window.bizstorySubmitLead(data);alert(result.confirmed?"✅ 상담 신청이 접수되었습니다. 확인 후 연락드리겠습니다.":"상담 요청이 전송되었습니다. 담당자가 접수 내역을 확인한 후 연락드리겠습니다.");contactForm.reset();closeConsultModal();}
+try{const result=await window.bizstorySubmitLead(data);alert(result.confirmed?"✅ 상담 신청이 접수되었습니다. 확인 후 연락드리겠습니다.":"상담 요청을 전송하도록 등록했습니다. 저장 여부는 담당자 확인 후 안내됩니다.");contactForm.reset();closeConsultModal();}
 catch(error){console.error("상담 요청 실패",error);alert("상담 요청을 전송하지 못했습니다. 입력 내용은 그대로 유지됩니다. 잠시 후 다시 시도해 주세요.");}
 finally{btn.disabled=false;btn.textContent="상담 신청 완료하기";}
 });
