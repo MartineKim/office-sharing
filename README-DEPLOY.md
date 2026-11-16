@@ -5,6 +5,6 @@
 - 시트 저장 확인은 Apps Script가 `{"ok":true}` 또는 `{"success":true}` 또는 `{"status":"success"}`를 반환할 때만 표시합니다. 일반적인 HTTP 200은 전송 성공만 의미합니다. GAS 로직과 시트 기록 실제 검증을 권장합니다.
 - 허니팟과 입력 검증이 추가되었지만 강한 스팸 보호가 필요하면 Turnstile 등 추가 설정이 필요합니다.
 - 개인정보 처리방침은 추가되었지만 실제 사업자/담당자 연락처, 위탁·국외이전 사항, Google Sheets 저장 기간, 삭제 작업은 운영자가 최종 보완해야 합니다.
-- 기존 Tailwind CDN은 유지했습니다. 생산용 CSS 빌드는 별도 배포 변경 후 전환해야 디자인 깨짐을 피할 수 있습니다.
-- 더브릿지플러스 저장 폴더 및 구버전 `industry`는 현재 main의 파일 트리에서 제거합니다. 공개 Git 커밋 이력 전체에는 원본이 남아 있으므로 추후 history rewrite 필요 여부를 별도 검토하세요.
+- Tailwind CDN을 제거하고 `assets/tailwind.css`(운영용 정적 CSS)로 전환했습니다. GitHub Actions `Build static Tailwind CSS` 워크플로가 성공했고 빌드 CSS가 main에 있습니다. HTML의 Tailwind 클래스를 수정하면 자동 빌드가 다시 실행됩니다.
+- 더브릿지플러스 저장 폴더 및 구버전 `industry`는 현재 main의 파일 트리에서 제거했습니다. 공개 Git 커밋 이력 전체에는 원본이 남아 있으므로 추후 history rewrite 필요 여부를 별도 검토하세요.
 - 공식 도메인 `https://k-bizstory.co.kr`과 Cloudflare Pages 연결, 카카오 채널 URL 및 오픈 후 사업장 주소를 확인하세요.
