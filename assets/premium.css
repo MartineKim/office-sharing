@@ -1,0 +1,64 @@
+/* BizStory premium hero: responsive first-screen redesign, 2026-11-16 */
+.biz-main-header,.biz-hero,.biz-industry-quick{font-family:Pretendard,system-ui,-apple-system,sans-serif}
+.biz-main-header{position:fixed;top:0;left:0;right:0;z-index:65;background:rgba(7,19,39,.97);border-bottom:1px solid rgba(255,255,255,.12);backdrop-filter:blur(14px)}
+.biz-nav-wrap{max-width:1250px;margin:auto;padding:0 27px;height:82px;display:flex;align-items:center;justify-content:space-between;gap:22px}
+.biz-brand{display:flex;align-items:center;gap:11px;color:#fff;text-decoration:none;white-space:nowrap}
+.biz-brand-mark{display:flex;align-items:center;justify-content:center;width:40px;height:40px;border:1.5px solid #46b5ff;border-radius:12px;color:#fff;font-size:24px;font-weight:900;box-shadow:inset 0 0 12px rgba(28,138,238,.25)}
+.biz-brand-type{display:flex;flex-direction:column;gap:1px}
+.biz-brand-type strong{font-size:20px;letter-spacing:-.04em;line-height:1.1;font-weight:900}
+.biz-brand-type small{color:#aebfd5;font-size:9px;letter-spacing:.09em;font-weight:650}
+.biz-top-links{display:flex;align-items:center;justify-content:center;gap:clamp(13px,1.7vw,28px)}
+.biz-top-links a{font-size:13.5px;font-weight:700;color:#f2f6ff;text-decoration:none;white-space:nowrap;transition:color .15s}
+.biz-top-links a:hover{color:#68c7ff}
+.biz-nav-actions{display:flex;align-items:center;gap:8px}
+.biz-nav-phone,.biz-nav-consult{min-height:39px;display:inline-flex;align-items:center;justify-content:center;gap:7px;border-radius:40px;white-space:nowrap;text-decoration:none;font-size:13.5px;font-weight:800;padding:7px 16px}
+.biz-nav-phone{color:#fff;border:1px solid #9cb9de;background:rgba(255,255,255,.06)}
+.biz-nav-phone:hover{background:rgba(255,255,255,.15)}
+.biz-nav-consult{background:#1b7fdd;border:1px solid #1b7fdd;color:#fff;cursor:pointer}
+.biz-nav-consult:hover{background:#0d67c2}
+.biz-hero{position:relative;background:#08172e;min-height:760px;color:#fff;overflow:hidden}
+.biz-hero-city,.biz-hero-office,.biz-hero-overlay{position:absolute;inset:0;pointer-events:none}
+.biz-hero-city{left:29%;background:url("https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=78&w=1800") center 42%/cover no-repeat;opacity:.72}
+.biz-hero-office{left:auto;right:0;width:33%;background:url("https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=78&w=1100") center/cover no-repeat;clip-path:polygon(21% 0,100% 0,100% 100%,0 100%);opacity:.85;box-shadow:-30px 0 70px rgba(0,0,0,.3)}
+.biz-hero-overlay{background:linear-gradient(90deg,#08172e 0%,rgba(8,23,46,.99) 26%,rgba(8,23,46,.89) 45%,rgba(8,23,46,.45) 72%,rgba(8,23,46,.18) 100%),linear-gradient(0deg,rgba(5,16,34,.96) 0%,transparent 35%);}
+.biz-hero-content{max-width:1250px;position:relative;z-index:2;margin:0 auto;padding:177px 27px 34px}
+.biz-hero-primary{max-width:1050px}
+.biz-hero-pill{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(113,203,255,.4);border-radius:100px;padding:8px 14px;color:#fff;background:linear-gradient(95deg,#0765c2,#31a9ed);font-size:12px;font-weight:800;box-shadow:0 8px 20px rgba(0,0,0,.2)}
+.biz-pill-dot{width:6px;height:6px;border-radius:50%;background:#d4f3ff}
+.biz-hero h1{max-width:1080px;margin:21px 0 0;font-size:clamp(36px,3.6vw,57px);font-weight:900;line-height:1.2;letter-spacing:-.058em;text-wrap:balance;text-shadow:0 3px 12px rgba(0,0,0,.36)}
+.biz-headline-blue{color:#53b9fa}
+.biz-headline-gold{color:#ffd171}
+.biz-hero-subtitle{font-size:clamp(22px,2.1vw,32px);font-weight:800;margin-top:11px;line-height:1.32;letter-spacing:-.045em}
+.biz-hero-subtitle strong{white-space:nowrap}
+.biz-hero-desc{margin-top:17px;max-width:740px;color:#d9e7fa;font-size:clamp(14px,1.1vw,17px);line-height:1.75;font-weight:480}
+.biz-hero-cta{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-top:26px}
+.biz-gradient-action,.biz-outline-action{border-radius:100px;min-height:52px;display:inline-flex;align-items:center;justify-content:center;gap:14px;padding:13px 28px;font-size:15px;font-weight:800;text-decoration:none;transition:transform .15s,filter .15s;cursor:pointer}
+.biz-gradient-action{color:white;background:linear-gradient(105deg,#0488ed 0%,#168fea 35%,#ff9b4c 100%);border:0;box-shadow:0 9px 26px rgba(0,0,0,.3)}
+.biz-outline-action{border:1.2px solid rgba(255,255,255,.85);color:#fff;background:rgba(0,0,0,.19)}
+.biz-gradient-action:hover,.biz-outline-action:hover{transform:translateY(-2px);filter:brightness(1.06)}
+.biz-hero-call{display:flex;gap:13px;align-items:center;flex-wrap:wrap;margin-top:20px;font-size:14px;color:#a8c5e8}
+.biz-hero-call a{color:#bcd2ed;text-decoration:none}
+.biz-hero-call a:hover strong{text-decoration:underline}
+.biz-hero-call strong{font-size:17px;font-weight:900;color:#fff;letter-spacing:.015em;margin-left:6px}
+.biz-phone-separator{width:1px;height:14px;background:rgba(255,255,255,.34)}
+.biz-hero-benefits{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:53px}
+.biz-benefit-card{display:flex;align-items:center;gap:12px;padding:19px 20px;min-height:92px;border:1px solid rgba(177,205,239,.29);background:rgba(255,255,255,.095);border-radius:10px;box-shadow:0 8px 25px rgba(0,0,0,.12);backdrop-filter:blur(10px)}
+.biz-benefit-icon{font-size:26px;color:#7accff;border-radius:8px;flex:none;display:flex;align-items:center;justify-content:center;width:48px;height:48px;background:rgba(8,23,46,.48)}
+.biz-benefit-card strong{display:block;font-size:16px;line-height:1.35;font-weight:850;color:#fff;letter-spacing:-.04em}
+.biz-benefit-card p{font-size:12px;color:#c6d5e9;margin-top:4px;line-height:1.5}
+.biz-hero-notice{margin-top:18px;color:#b4c5d9;font-size:11px;line-height:1.5}
+.biz-industry-quick{padding:42px 27px;background:#f6faff;border-bottom:1px solid #dbeafe}
+.biz-industry-quick-inner{max-width:1196px;margin:auto;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:35px;align-items:center}
+.biz-section-eyebrow{display:block;color:#1681d4;font-size:11px;font-weight:850;letter-spacing:.14em}
+.biz-industry-quick-text h2{font-size:clamp(22px,2.3vw,30px);font-weight:900;letter-spacing:-.045em;color:#132d52;margin-top:5px}
+.biz-industry-quick-text p{font-size:14px;color:#52667d;margin-top:7px}
+.biz-industry-label{display:block;color:#36506f;font-weight:800;font-size:12px;margin-bottom:7px}
+.biz-industry-inputline{display:flex;background:white;border:1px solid #c5d7eb;box-shadow:0 7px 25px rgba(21,66,120,.075);padding:6px;border-radius:13px;gap:8px}
+.biz-industry-inputline input{min-width:0;flex:1;border:0;outline:0;padding:12px 11px;color:#172b4a;font-size:15px}
+.biz-industry-inputline input:focus-visible{outline:2px solid #64baff;outline-offset:-2px;border-radius:6px}
+.biz-industry-inputline button{flex:none;background:#106dcb;color:white;padding:12px 18px;border:0;border-radius:9px;font-weight:800;font-size:14px;cursor:pointer}
+.biz-industry-inputline button:hover{background:#0758aa}
+@media(max-width:1190px){.biz-nav-wrap{gap:15px}.biz-top-links{gap:13px}.biz-top-links a{font-size:12.5px}.biz-nav-consult{display:none}.biz-hero-content{padding-top:160px}.biz-hero h1{font-size:clamp(36px,3.65vw,47px)}}
+@media(max-width:980px){.biz-top-links{display:none}.biz-nav-wrap{height:72px}.biz-hero-content{padding-top:139px}.biz-hero-office{width:39%}.biz-hero h1{max-width:730px;font-size:clamp(34px,4.1vw,43px)}.biz-hero-benefits{margin-top:36px}.biz-benefit-card{padding:15px 12px}.biz-benefit-card strong{font-size:14px}.biz-benefit-card p{font-size:11px}.biz-benefit-icon{width:38px;height:38px;font-size:23px}}
+@media(max-width:767px){.biz-nav-wrap{height:64px;padding:0 15px}.biz-brand{gap:7px}.biz-brand-mark{width:34px;height:34px;font-size:21px}.biz-brand-type strong{font-size:16px}.biz-brand-type small{font-size:7px}.biz-nav-phone{min-height:35px;font-size:12px;padding:6px 11px}.biz-hero{min-height:auto}.biz-hero-city{left:0;opacity:.36;background-position:50% 40%}.biz-hero-office{display:none}.biz-hero-overlay{background:linear-gradient(90deg,rgba(5,17,37,.96),rgba(5,17,37,.84)),linear-gradient(0deg,rgba(5,17,37,.96),transparent 40%)}.biz-hero-content{padding:117px 20px 35px}.biz-hero-pill{font-size:10px;padding:7px 10px;white-space:normal}.biz-hero h1{font-size:clamp(29px,7.5vw,41px);line-height:1.27;letter-spacing:-.06em;margin-top:22px}.biz-headline-gold{display:inline}.biz-hero-subtitle{font-size:20px;margin-top:17px}.biz-hero-desc{font-size:13.5px;margin-top:12px}.biz-desktop-break{display:none}.biz-hero-cta{margin-top:24px;gap:9px}.biz-gradient-action,.biz-outline-action{min-height:46px;font-size:13px;padding:10px 15px}.biz-hero-call{font-size:12px;gap:7px;margin-top:19px}.biz-hero-call strong{font-size:14px;margin-left:4px}.biz-phone-separator{display:none}.biz-hero-benefits{grid-template-columns:1fr;gap:8px;margin-top:29px}.biz-benefit-card{min-height:65px;gap:12px;padding:11px 13px}.biz-benefit-icon{width:38px;height:38px}.biz-benefit-card strong{font-size:14px}.biz-benefit-card p{font-size:12px}.biz-hero-notice{font-size:10px}.biz-industry-quick{padding:32px 20px 35px}.biz-industry-quick-inner{display:block}.biz-industry-search-wrap{margin-top:20px}.biz-industry-quick-text h2{font-size:23px}.biz-industry-quick-text p{font-size:13px}.biz-industry-inputline input{font-size:13px}.biz-industry-inputline button{font-size:12px;padding:12px 11px}.biz-mobile-bar{grid-template-columns:1fr 1.3fr}.biz-mobile-bar .biz-mobile-secondary{background:#eff6ff;color:#14579e;border-color:#a6c9ed}}
+@media(prefers-reduced-motion:reduce){.biz-gradient-action,.biz-outline-action{transition:none}}

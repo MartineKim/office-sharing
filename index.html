@@ -5,15 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="apple-touch-icon" href="/%EB%B9%84%EC%A6%88%EC%8A%A4%ED%86%A0%EB%A6%AC%20%EB%A1%9C%EA%B3%A0_04.png">
-  <title>비즈스토리 BizStory | 강남역 비상주사무실·공유오피스 창업 준비</title>
-  <meta name="description" content="비즈스토리(BizStory)는 강남역 비상주사무실·독립형 공유오피스를 준비 중입니다. 업종별 사업자등록 주소지 가능 여부를 확인하고 사전 상담을 신청하세요.">
+  <title>강남 프리미엄 비상주사무실 · 20년 경력 세무사무장 | 비즈스토리</title>
+  <meta name="description" content="강남역 인근 프리미엄 비상주사무실·공유오피스 오픈 준비 중. 20년 경력 세무사무장이 사업자등록 준비를 직접 안내합니다. 대표번호 1866-2265.">
   <link rel="canonical" href="https://k-bizstory.co.kr/">
 <meta property="og:type" content="website"><meta property="og:site_name" content="비즈스토리 BizStory">
-<meta property="og:locale" content="ko_KR"><meta property="og:title" content="비즈스토리 | 강남역 비상주사무실·공유오피스 오픈 준비">
-<meta property="og:description" content="강남역 인근 공유오피스 오픈 준비 중. 31개 업종조회와 사전 상담을 제공합니다.">
+<meta property="og:locale" content="ko_KR"><meta property="og:title" content="강남 프리미엄 주소지, 20년 경력 세무사무장 | 비즈스토리">
+<meta property="og:description" content="강남역 인근 프리미엄 비상주사무실. 20년 경력 세무사무장 직접 상담 · 1866-2265 · 오픈 준비 중">
 <meta property="og:url" content="https://k-bizstory.co.kr/"><meta property="og:image" content="https://k-bizstory.co.kr/bizstory-logo-2026.png">
 <meta name="twitter:card" content="summary_large_image"><script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"비즈스토리 BizStory","url":"https://k-bizstory.co.kr/"}</script>
 <link rel="stylesheet" href="/assets/tailwind.css">
+<link rel="stylesheet" href="/assets/premium.css?v=20261116">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
   <!-- Pretendard 폰트 적용 -->
   <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
@@ -59,131 +60,73 @@
 </head>
 <body class="bg-slate-50 text-slate-800 antialiased">
 
- <!-- Header -->
-  <header class="fixed w-full top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16 lg:h-20">
-
-      <!-- Logo -->
-      <a href="/" class="flex items-center shrink-0" aria-label="비즈스토리 홈">
-        <img src="/bizstory-logo-2026.png" alt="공유오피스 비즈스토리 - Your Business Starts Here." class="block w-auto h-[52.8px] sm:h-[57.6px] lg:h-[74.4px] max-w-[min(216px,calc(100vw-152px))] sm:max-w-[276px] lg:max-w-[384px] object-contain" />
-      </a>
-
-      <!-- Menu -->
-      <nav class="hidden md:flex items-center gap-8 text-[15px] font-semibold text-slate-600">
-        <a href="#services" class="hover:text-blue-700 transition">서비스 안내</a>
-        <a href="#pricing" class="hover:text-blue-700 transition">요금 안내</a><a href="#process" class="hover:text-blue-700 transition">이용 절차</a><a href="#faq" class="hover:text-blue-700 transition">FAQ</a>
-        <a href="#location" class="hover:text-blue-700 transition">오픈 준비 안내</a>
-      </nav>
-
-      <!-- CTA -->
-      <div class="flex flex-col items-center gap-1">
-        <span class="consult-bounce text-[11px] sm:text-xs font-bold text-blue-700" aria-label="24시간 상담 접수 가능">24시간 상담 접수</span>
-        <a href="#" onclick="openConsultModal(); return false;"
-           class="inline-flex items-center justify-center px-5 py-2.5 text-sm font-bold text-white bg-blue-700 rounded-lg shadow-md hover:bg-blue-800 transition">
-          지금 문의하기
-        </a>
-      </div>
-
+ <!-- Premium navigation -->
+<header class="biz-main-header">
+  <div class="biz-nav-wrap">
+    <a class="biz-brand" href="/" aria-label="비즈스토리 홈">
+      <span class="biz-brand-mark" aria-hidden="true">B</span>
+      <span class="biz-brand-type"><strong>K-BIZSTORY</strong><small>YOUR BUSINESS STARTS HERE</small></span>
+    </a>
+    <nav class="biz-top-links" aria-label="주요 메뉴">
+      <a href="#services">서비스 소개</a>
+      <a href="#pricing">공유오피스·요금</a>
+      <a href="/industry.html">업종조회</a>
+      <a href="#support">세무·행정 지원</a>
+      <a href="#faq">고객센터</a>
+    </nav>
+    <div class="biz-nav-actions">
+      <a class="biz-nav-phone" href="tel:18662265" aria-label="대표번호 1866-2265로 전화하기"><span aria-hidden="true">☎</span> 1866-2265</a>
+      <button type="button" class="biz-nav-consult" onclick="openConsultModal()">상담 신청</button>
     </div>
-  </header>
-
-
-  <!-- Hero Section -->
-  <section class="relative min-h-screen flex items-center justify-center pt-16 lg:pt-20">
-
-    <!-- Background Image -->
-    <div class="absolute inset-0 z-0">
-      <div class="hero-slides" aria-hidden="true">
-        <img class="hero-slide" src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&amp;fit=crop&amp;q=80&amp;w=1920" alt="" fetchpriority="high" />
-        <img class="hero-slide" data-src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&amp;fit=crop&amp;q=80&amp;w=1920" alt="" loading="lazy" />
-        <img class="hero-slide" data-src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&amp;fit=crop&amp;q=80&amp;w=1920" alt="" loading="lazy" />
-        <img class="hero-slide" data-src="https://images.unsplash.com/photo-1497366412874-3415097a27e7?auto=format&amp;fit=crop&amp;q=80&amp;w=1920" alt="" loading="lazy" />
-      </div>
-
-      <!-- Dark Overlay -->
-      <div class="absolute inset-0 bg-slate-950/70"></div>
-    </div>
-
-
-    <!-- Hero Content -->
-    <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-
-      <!-- Brand Message -->
-      <p class="text-sm sm:text-base font-semibold tracking-[0.25em] text-blue-300 uppercase mb-6">
-        Your Business starts here.
-      </p>
-
-      <!-- Main Title -->
-      <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-tight">
-        당신의 비즈니스가
-        <br />
-        <span class="text-blue-400">시작되는 곳</span>
-      </h1>
-
-      <!-- Description -->
-      <p class="mt-7 text-lg sm:text-xl text-slate-200 max-w-2xl mx-auto leading-relaxed">
-        강남역 인근 비상주·상주 공유오피스 오픈 준비 중
-        <br class="hidden sm:block" />
-        사업자등록 주소지 상담부터 세무 일정 안내까지, 1인 사업자의 성장을 준비합니다.
-      </p>
-<!-- 업종 조회 MVP -->
-<div class="mt-8 max-w-2xl mx-auto">
-
-  <p class="text-white text-lg font-bold mb-3">
-    내 업종, 비상주로 사업자등록 가능할까요?
-  </p>
-
-  <div class="flex flex-col sm:flex-row gap-2 bg-white/95 p-2 rounded-2xl shadow-2xl">
-
-    <input
-      id="industrySearch"
-      type="text"
-      placeholder="업종명 또는 업종코드 6자리를 입력하세요"
-      class="flex-1 px-5 py-4 rounded-xl text-slate-800 outline-none"
-      onkeydown="if(event.key === 'Enter') searchIndustry()"
-    />
-
-    <button
-      type="button"
-      onclick="searchIndustry()"
-      class="px-7 py-4 bg-blue-700 text-white font-bold rounded-xl hover:bg-blue-800 transition"
-    >
-      업종 조회
-    </button>
-
   </div>
+</header>
 
-  <p class="mt-3 text-sm text-slate-300">
-    예: 전자상거래 · 쇼핑몰 · 525101
-  </p>
 
-</div>
-
-      <!-- Buttons -->
-      <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
-
-        <a href="#pricing"
-           class="px-8 py-4 text-base font-bold text-white bg-blue-600 rounded-xl shadow-lg hover:bg-blue-700 transition transform hover:-translate-y-1">
-          비상주 오피스 알아보기
-        </a>
-
-        <a href="#" onclick="openConsultModal(); return false;"
-           class="px-8 py-4 text-base font-bold text-slate-900 bg-white rounded-xl shadow-lg hover:bg-slate-50 transition transform hover:-translate-y-1">
-          상담 신청하기
-        </a>
-
+  <!-- Premium brand hero -->
+<section class="biz-hero" aria-labelledby="bizHeroTitle">
+  <div class="biz-hero-city" aria-hidden="true"></div>
+  <div class="biz-hero-office" aria-hidden="true"></div>
+  <div class="biz-hero-overlay" aria-hidden="true"></div>
+  <div class="biz-hero-content">
+    <div class="biz-hero-primary">
+      <span class="biz-hero-pill"><span class="biz-pill-dot" aria-hidden="true"></span> 강남역·역삼권 프리미엄 비상주 &amp; 공유오피스</span>
+      <h1 id="bizHeroTitle">강남 프리미엄 주소지,<br><span class="biz-headline-blue">20년 경력</span> <span class="biz-headline-gold">세무사무장 직접 상담</span></h1>
+      <p class="biz-hero-subtitle">성공적인 비즈니스의 시작, <strong>K-BIZSTORY</strong></p>
+      <p class="biz-hero-desc">단순한 주소 임대를 넘어, 1인 기업과 스타트업을 위한<br class="biz-desktop-break">사업자등록 준비와 세무 일정 안내까지 함께합니다.</p>
+      <div class="biz-hero-cta">
+        <button type="button" class="biz-gradient-action" onclick="openConsultModal()">실시간 상담 신청하기 <span aria-hidden="true">→</span></button>
+        <a class="biz-outline-action" href="#pricing">서비스·요금 안내</a>
       </div>
-
-
-      <!-- Small Trust Message -->
-      <div class="mt-12 flex flex-wrap justify-center gap-x-8 gap-y-3 text-sm text-slate-300">
-        <span>✓ 강남역 인근</span>
-        <span>✓ 비상주·상주 오피스</span>
-        <span>✓ 사업자등록 지원</span>
+      <div class="biz-hero-call">
+        <a href="tel:18662265" aria-label="대표번호 1866-2265로 전화하기">대표번호 <strong>1866-2265</strong></a>
+        <span aria-hidden="true" class="biz-phone-separator"></span>
+        <a href="tel:01088319369" aria-label="대표 직통번호 010-8831-9369로 전화하기">대표 직통 <strong>010-8831-9369</strong></a>
       </div>
-
     </div>
-  </section>
+    <div class="biz-hero-benefits" aria-label="비즈스토리 핵심 강점">
+      <div class="biz-benefit-card"><span class="biz-benefit-icon" aria-hidden="true">⌖</span><div><strong>강남 프리미엄 입지</strong><p>강남역 인근 사업장 오픈 준비 중</p></div></div>
+      <div class="biz-benefit-card"><span class="biz-benefit-icon" aria-hidden="true">▤</span><div><strong>20년 경력 세무사무장</strong><p>사업자등록·세무 일정 실무 안내</p></div></div>
+      <div class="biz-benefit-card"><span class="biz-benefit-icon" aria-hidden="true">▥</span><div><strong>1인 기업 맞춤 서비스</strong><p>비상주 주소지·업무 공간 제공 예정</p></div></div>
+    </div>
+    <p class="biz-hero-notice">※ 현재 오픈 준비 중입니다. 정확한 주소와 공간은 확정 후 안내합니다. 배경 이미지는 연출 예시입니다.</p>
+  </div>
+</section>
+<section class="biz-industry-quick" aria-labelledby="bizIndustryQuickTitle">
+  <div class="biz-industry-quick-inner">
+    <div class="biz-industry-quick-text">
+      <span class="biz-section-eyebrow">FREE INDUSTRY CHECK</span>
+      <h2 id="bizIndustryQuickTitle">내 업종, 비상주 등록 가능할까요?</h2>
+      <p>31개 주요 업종의 사업자등록 확인 사항을 무료로 조회하세요.</p>
+    </div>
+    <div class="biz-industry-search-wrap">
+      <label for="industrySearch" class="biz-industry-label">업종명 또는 업종코드 검색</label>
+      <div class="biz-industry-inputline">
+        <input id="industrySearch" type="search" placeholder="예: 전자상거래 · 유튜버 · 525101" onkeydown="if(event.key==='Enter') searchIndustry()" autocomplete="off">
+        <button type="button" onclick="searchIndustry()">업종 조회 <span aria-hidden="true">→</span></button>
+      </div>
+    </div>
+  </div>
+</section>
 
   <!-- Services Section -->
   <section id="services" class="py-24 bg-slate-50">
@@ -320,15 +263,18 @@ function selectPricingConsult(type,months){const inquiry=document.getElementById
   <div class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 py-9 sm:py-10">
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-14">
       <div>
-        <h3 class="text-xl sm:text-2xl font-extrabold mb-4">사전 상담</h3>
-        <p class="text-sm text-neutral-400 mb-1">24시간 온라인 접수</p>
-        <button type="button" onclick="openConsultModal()" class="text-xl sm:text-2xl font-bold text-orange-400">상담 신청하기</button>
-      </div>
-      <div>
-        <h3 class="text-xl sm:text-2xl font-extrabold mb-4">고객센터</h3>
-        <p class="text-sm text-neutral-400 mb-1">연락처는 오픈 전 안내</p>
-        <button type="button" onclick="openConsultModal()" class="text-xl sm:text-2xl font-bold text-orange-400">온라인 문의하기</button>
-      </div>
+  <h3 class="text-xl sm:text-2xl font-extrabold mb-4">비즈스토리 대표번호</h3>
+  <p class="text-sm text-neutral-400 mb-1">전화 상담</p>
+  <a href="tel:18662265" class="inline-block text-3xl sm:text-4xl font-black tracking-tight text-orange-400 hover:text-orange-300">1866-2265</a>
+  <p class="text-neutral-400 mt-3 text-sm">24시간 온라인 상담 신청 접수 가능</p>
+  <button type="button" onclick="openConsultModal()" class="mt-3 text-sky-300 font-bold underline">온라인 상담 신청하기</button>
+</div>
+<div>
+  <h3 class="text-xl sm:text-2xl font-extrabold mb-4">대표 직통 상담</h3>
+  <p class="text-sm text-neutral-400 mb-1">사업자등록 준비·업종 관련 문의</p>
+  <a href="tel:01088319369" class="inline-block text-3xl sm:text-4xl font-black tracking-tight text-orange-400 hover:text-orange-300">010-8831-9369</a>
+  <p class="text-neutral-400 mt-3 text-sm">통화가 어려울 때 온라인 상담을 남겨주세요.</p>
+</div>
     </div>
   </div>
   <div class="border-t border-neutral-800">
@@ -340,13 +286,13 @@ function selectPricingConsult(type,months){const inquiry=document.getElementById
       </nav>
       <p class="text-neutral-300">브랜드명: 비즈스토리 BizStory · 오픈 준비 중 (사업자 정보 확정 후 공개)</p>
       <p class="text-neutral-300">사업장 주소: 강남역 인근 후보지 검토 중</p>
-      <p class="text-neutral-300">문의: 홈페이지 사전 상담 이용</p>
+      <p class="text-neutral-300">대표전화: <a href="tel:18662265" class="underline">1866-2265</a> · 대표 직통: <a href="tel:01088319369" class="underline">010-8831-9369</a></p>
       <p class="text-neutral-500 mt-4">© 2026 BIZSTORY All Rights Reserved. | 강남역 인근 비상주사무실 및 공유오피스 오픈 준비 중</p>
     </div>
   </div>
 </footer>
 <nav id="bizMobileBar" class="biz-mobile-bar" aria-label="모바일 빠른 메뉴">
-  <a class="biz-mobile-secondary" href="/industry.html">업종조회</a>
+  <a class="biz-mobile-secondary" href="tel:18662265" aria-label="1866-2265로 전화 상담하기">☎ 전화 상담</a>
   <button type="button" class="biz-mobile-primary" onclick="openConsultModal()" aria-label="비즈스토리 상담 신청창 열기">상담 신청하기</button>
 </nav>
 <button id="backToTop" type="button" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="맨 위로 이동" class="fixed bottom-24 right-5 z-40 w-12 h-12 rounded-2xl bg-white border-2 border-blue-600 text-blue-900 text-2xl font-bold shadow-lg hover:bg-blue-50">↑</button>
@@ -359,7 +305,7 @@ function selectPricingConsult(type,months){const inquiry=document.getElementById
     <div class="mx-3 mb-3 bg-white rounded-2xl p-4">
       <p class="text-sm font-bold text-slate-900">비즈스토리</p><p class="text-sm text-slate-700 mt-2 leading-relaxed">안녕하세요! 비상주사무실과 공유오피스 상담을 도와드릴게요.</p>
       <a id="bizKakaoLink" href="#" onclick="return openBizKakao(event)" class="mt-5 block w-full text-center bg-[#111052] hover:bg-indigo-900 text-white font-bold rounded-xl py-3">카카오톡으로 문의하기 ↗</a>
-      <p class="text-xs text-center text-slate-400 mt-3">카카오톡 채널 연결 준비 중</p>
+      <p class="text-xs text-center text-slate-400 mt-3">카카오톡 채널 연결 준비 중 · 전화 상담 <a href="tel:18662265" class="underline text-blue-700">1866-2265</a></p>
     </div>
     <div class="mx-3 mb-4 bg-white rounded-2xl p-4"><p class="text-xs text-slate-500 mb-3">다른 방법으로 문의</p><button type="button" onclick="toggleBizChat(false);openConsultModal()" class="w-full rounded-xl bg-blue-700 text-white py-3 font-bold">홈페이지 상담 신청</button></div>
   </div>
@@ -449,6 +395,6 @@ finally{btn.disabled=false;btn.textContent="상담 신청 완료하기";}
     }
   </script>
 
-<script>(function(){if(window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches)return;document.querySelectorAll(".hero-slide[data-src]").forEach((img,i)=>setTimeout(()=>{img.src=img.getAttribute("data-src");img.removeAttribute("data-src");},2300+i*1800));})();</script>
+
 </body>
 </html>
