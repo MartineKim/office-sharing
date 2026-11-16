@@ -30,7 +30,32 @@
     @keyframes hero-fade { 0% { opacity:0; } 3%,25% { opacity:1; } 28%,100% { opacity:0; } }
     @keyframes hero-move { 0% { transform:scale(1.03); } 28%,100% { transform:scale(1.12); } }
     @media (prefers-reduced-motion: reduce) { .consult-bounce { animation:none; } .hero-slide { animation:none; } .hero-slide:first-child { opacity:1; } }
-  </style>
+  /* 모바일 전용 고정 상담 바. 페이지 콘텐츠를 가리지 않도록 safe-area 만큼 여백 확보 */
+.biz-mobile-bar{display:none}
+@media(max-width:767px){
+  body{padding-bottom:calc(82px + env(safe-area-inset-bottom,0px))}
+  #bizChatWidget,#backToTop{display:none!important}
+  .biz-mobile-bar{
+    position:fixed;bottom:0;left:0;right:0;z-index:85;
+    display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.45fr);
+    gap:10px;padding:10px 14px calc(10px + env(safe-area-inset-bottom,0px));
+    background:rgba(255,255,255,.98);border-top:1px solid #e2e8f0;
+    box-shadow:0 -8px 25px rgba(15,23,42,.12);box-sizing:border-box;
+    -webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px)
+  }
+  .biz-mobile-bar a,.biz-mobile-bar button{
+    display:flex;align-items:center;justify-content:center;
+    min-width:0;min-height:52px;padding:8px 10px;box-sizing:border-box;
+    border-radius:13px;font:700 15px/1.3 Pretendard,system-ui,sans-serif;
+    text-decoration:none;white-space:nowrap;cursor:pointer
+  }
+  .biz-mobile-bar .biz-mobile-secondary{color:#144a8f;background:#f1f5f9;border:1px solid #cbd5e1}
+  .biz-mobile-bar .biz-mobile-primary{color:#fff;background:#1d4ed8;border:1px solid #1d4ed8}
+  .biz-mobile-bar a:focus-visible,.biz-mobile-bar button:focus-visible{outline:3px solid #f59e0b;outline-offset:2px}
+  #consultModal>.relative>div{max-height:calc(100dvh - 10px);overflow-y:auto;overscroll-behavior:contain}
+}
+
+</style>
 </head>
 <body class="bg-slate-50 text-slate-800 antialiased">
 
@@ -320,7 +345,11 @@ function selectPricingConsult(type,months){const inquiry=document.getElementById
     </div>
   </div>
 </footer>
-<button type="button" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="맨 위로 이동" class="fixed bottom-24 right-5 z-40 w-12 h-12 rounded-2xl bg-white border-2 border-blue-600 text-blue-900 text-2xl font-bold shadow-lg hover:bg-blue-50">↑</button>
+<nav id="bizMobileBar" class="biz-mobile-bar" aria-label="모바일 빠른 메뉴">
+  <a class="biz-mobile-secondary" href="/industry.html">업종조회</a>
+  <button type="button" class="biz-mobile-primary" onclick="openConsultModal()" aria-label="비즈스토리 상담 신청창 열기">상담 신청하기</button>
+</nav>
+<button id="backToTop" type="button" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="맨 위로 이동" class="fixed bottom-24 right-5 z-40 w-12 h-12 rounded-2xl bg-white border-2 border-blue-600 text-blue-900 text-2xl font-bold shadow-lg hover:bg-blue-50">↑</button>
 <div class="fixed bottom-5 right-5 z-40 flex flex-col items-end gap-3" id="bizChatWidget">
   <div id="bizChatPanel" role="dialog" aria-label="비즈스토리 상담창" aria-hidden="true" class="hidden w-[min(360px,calc(100vw-40px))] rounded-[24px] bg-[#f6f6f8] shadow-2xl border border-slate-200 overflow-hidden mb-1">
     <div class="flex justify-between items-start px-5 pt-5 pb-3">
@@ -377,7 +406,7 @@ function selectPricingConsult(type,months){const inquiry=document.getElementById
     </div>
   </div>
 
-  <script src="/assets/lead.js?v=20261116-fast"></script>
+  <script src="/assets/lead.js?v=20261116-mobile"></script>
 <script>
   function openConsultModal(options = {}) {
     const modal = document.getElementById("consultModal");
@@ -389,14 +418,18 @@ function selectPricingConsult(type,months){const inquiry=document.getElementById
   }
   function closeConsultModal() { const modal=document.getElementById("consultModal"); if(!modal)return; modal.classList.add("hidden"); modal.setAttribute("aria-hidden","true"); document.body.classList.remove("overflow-hidden"); }
   document.addEventListener("keydown", e => { if(e.key === "Escape") closeConsultModal(); });
+  // 개인정보 안내 페이지에서도 즉시 상담창으로 진입합니다.
+  if(new URLSearchParams(location.search).get("consult")==="1"){
+    window.addEventListener("DOMContentLoaded",()=>openConsultModal(),{once:true});
+  }
   const contactForm = document.getElementById("contactForm");
   contactForm.addEventListener("submit",async function(event){
 event.preventDefault();if(!contactForm.reportValidity())return;
 const btn=contactForm.querySelector("button[type='submit']");btn.disabled=true;btn.textContent="전송 중입니다...";
-const inquiryType=document.getElementById("inquiryType").value,params=new URLSearchParams(location.search),source=(params.get("utm_source")||"").toLowerCase();
-const channel=source==="naver"?"네이버":source==="instagram"?"인스타그램":source==="meta"||source==="facebook"?"메타":source==="daangn"?"당근":source==="youtube"?"유튜브":source==="threads"?"Threads":"직접유입";
-let campaign=params.get("utm_campaign")||"";if(!campaign)campaign=inquiryType.includes("비상주")?"비상주":inquiryType.includes("상주")?"상주":inquiryType==="회의실"?"회의실":inquiryType.includes("업종")?"업종조회":"기타";
-const data={type:"lead",name:document.getElementById("name").value.trim(),phone:document.getElementById("phone").value.trim(),inquiryType,message:document.getElementById("message").value.trim(),channel,campaign,adContent:params.get("utm_content")||"",keyword:params.get("utm_term")||"",website:document.getElementById("website").value,consent:true};
+const inquiryType=document.getElementById("inquiryType").value,params=new URLSearchParams(location.search),tracking=window.bizstoryGetAttribution(),source=(tracking.utm_source||"").toLowerCase();
+const channel=source==="naver"?"네이버":source==="instagram"?"인스타그램":source==="meta"||source==="facebook"?"메타":source==="daangn"?"당근":source==="youtube"?"유튜브":source==="threads"?"Threads":source==="google"?"구글":source==="kakao"?"카카오":source==="facebook"?"메타":"직접유입";
+let campaign=tracking.utm_campaign||"";if(!campaign)campaign=inquiryType.includes("비상주")?"비상주":inquiryType.includes("상주")?"상주":inquiryType==="회의실"?"회의실":inquiryType.includes("업종")?"업종조회":"기타";
+const data={type:"lead",name:document.getElementById("name").value.trim(),phone:document.getElementById("phone").value.trim(),inquiryType,message:document.getElementById("message").value.trim(),channel,campaign,adContent:tracking.utm_content||"",keyword:tracking.utm_term||"",website:document.getElementById("website").value,consent:true};
 try{const result=await window.bizstorySubmitLead(data);alert(result.confirmed?"✅ 상담 신청이 접수되었습니다. 확인 후 연락드리겠습니다.":"상담 요청을 전송하도록 등록했습니다. 저장 여부는 담당자 확인 후 안내됩니다.");contactForm.reset();closeConsultModal();}
 catch(error){console.error("상담 요청 실패",error);alert("상담 요청을 전송하지 못했습니다. 입력 내용은 그대로 유지됩니다. 잠시 후 다시 시도해 주세요.");}
 finally{btn.disabled=false;btn.textContent="상담 신청 완료하기";}

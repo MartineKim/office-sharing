@@ -3,6 +3,50 @@
    A queued request is NOT proof of spreadsheet storage. */
 (function(){
   const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw5P-hbWNdaQKDHlD_EJBExLu1Dyoj6CtFOy5Msfzcpb0Dc5rKrxHISRA0g3pY2OZoCjg/exec";
+  // Attribution survives navigation between homepage and industry lookup, for this tab only.
+  const TRACK_KEY="bizstory_attribution_v1";
+  const PARAMS=["utm_source","utm_medium","utm_campaign","utm_content","utm_term"];
+  function getAttribution(){
+    const query=new URLSearchParams(location.search);
+    let previous={};
+    try{
+      const raw=JSON.parse(sessionStorage.getItem(TRACK_KEY)||"{}");
+      if(raw && typeof raw==="object" && Date.now()-Number(raw.time||0)<30*60*1000) previous=raw;
+    }catch(_){}
+    const explicit=PARAMS.some(k=>query.has(k));
+    let data=explicit?{time:Date.now()}:previous;
+    for(const key of PARAMS){
+      const value=query.get(key);
+      if(value) data[key]=value.slice(0,160);
+    }
+    // No UTM: document.referrer may disclose only the originating domain.
+    if(!data.utm_source && document.referrer){
+      try{
+        const host=new URL(document.referrer).hostname.toLowerCase();
+        if(host!==location.hostname && !host.endsWith("."+location.hostname)){
+          const domains=[
+            [/\\.naver\\.com$|^naver\\.com$/,"naver"],
+            [/\\.google\\.com$|^google\\.com$|\\.google\\.co\\.kr$/,"google"],
+            [/\\.instagram\\.com$|^instagram\\.com$/,"instagram"],
+            [/\\.facebook\\.com$|^facebook\\.com$/,"facebook"],
+            [/\\.youtube\\.com$|^youtube\\.com$/,"youtube"],
+            [/\\.threads\\.net$|^threads\\.net$/,"threads"],
+            [/\\.daangn\\.com$|^daangn\\.com$/,"daangn"],
+            [/\\.kakao\\.com$|^kakao\\.com$/,"kakao"]
+          ];
+          const found=domains.find(([pattern])=>pattern.test(host));
+          if(found)data.utm_source=found[1];
+        }
+      }catch(_){}
+    }
+    if(data.utm_source){
+      data.time=Date.now();
+      try{sessionStorage.setItem(TRACK_KEY,JSON.stringify(data))}catch(_){}
+    }
+    return data;
+  }
+  window.bizstoryGetAttribution=getAttribution;
+  getAttribution();
   function bodyFor(payload){
     if(!payload || typeof payload!=="object")throw new Error("잘못된 전송 데이터");
     if(payload.type==="industrySearch"){
